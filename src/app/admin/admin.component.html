@@ -1,0 +1,86 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="256px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a href="https://ng.ant.design/" target="_blank">
+        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+        <h1>Ant Design Of Angular</h1>
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <ng-container *ngIf="auth.isAdmin()">
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/admin/dashboard">
+            <i nz-icon nzType="dashboard" nzTheme="outline"></i>
+            <span>Tổng quan</span>
+          </a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/admin/agent">
+            <i nz-icon nzType="user" nzTheme="outline"></i>
+            <span>Tài khoản</span>
+          </a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/admin/vaccination-site">
+            <i nz-icon nzType="home" nzTheme="outline"></i>
+            <span>Cơ sở tiêm chủng</span>
+          </a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/admin/vaccination-package">
+            <i nz-icon nzType="inbox" nzTheme="outline"></i>
+            <span>Gói tiêm chủng</span>
+          </a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/admin/vaccination-package">
+            <i nz-icon nzType="audit" nzTheme="outline"></i>
+            <span>Biểu mẫu khám sàng lọc</span>
+          </a>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="auth.isAgent()">
+      </ng-container>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header px-6">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+            <i class="trigger"
+               nz-icon
+               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            ></i>
+        </span>
+        <div class="ml-auto flex items-center gap-5">
+          <nz-avatar nzSize="large" nzShape="square" nzIcon="user" nz-dropdown [nzDropdownMenu]="menuProfile"
+                     nzPlacement="bottomRight" nzTrigger="click"></nz-avatar>
+        </div>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
+
+<nz-dropdown-menu #menuProfile="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item routerLink="/pages/user/profile" [nzDisabled]="true">
+      <i nz-icon nzType="user"></i>
+      <span class="pl-2">Hồ sơ cá nhân</span>
+    </li>
+    <li nz-menu-divider></li>
+    <li nz-menu-item class="text-red-500" (click)="logout()">
+      <i nz-icon nzType="logout"></i>
+      <span class="pl-2">Đăng xuất</span>
+    </li>
+  </ul>
+</nz-dropdown-menu>
