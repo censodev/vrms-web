@@ -13,7 +13,6 @@ export class AuthInterceptor implements HttpInterceptor {
     request = request.clone({
       headers: new HttpHeaders({
         'Authorization': `Bearer ${this.authService.getToken()}`,
-        'Access-Control-Allow-Origin': '*',
       }),
     });
     return next.handle(request)
