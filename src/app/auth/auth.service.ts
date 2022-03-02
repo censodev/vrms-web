@@ -4,7 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable, of} from "rxjs";
 import {map, tap} from "rxjs/operators";
 import {environment} from "../../environments/environment";
-import {ResModel} from "../core/models/res.model";
+import {Res} from "../core/payload/res";
 import jwt_decode from "jwt-decode";
 import {RoleEnum} from "./role.enum";
 
@@ -19,11 +19,11 @@ export class AuthService {
               private http: HttpClient) {
   }
 
-  login(body: { username: string, password: string, remember: boolean }, forAdmin = false): Observable<ResModel<{ token: string, expires: number }>> {
+  login(body: { username: string, password: string, remember: boolean }, forAdmin = false): Observable<Res<{ token: string, expires: number }>> {
     const endPoint = forAdmin
       ? `${environment.apiEndpoint}/auth/admin/login`
       : `${environment.apiEndpoint}/auth/login`;
-    return this.http.post<ResModel<{ token: string, expires: number }>>(endPoint, {
+    return this.http.post<Res<{ token: string, expires: number }>>(endPoint, {
       username: body.username,
       password: body.password
     })
