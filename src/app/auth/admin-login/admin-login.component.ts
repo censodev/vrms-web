@@ -30,7 +30,7 @@ export class AdminLoginComponent implements OnInit {
   submitForm(): void {
     if (this.validateForm.valid) {
       this.loading = true;
-      this.authService.login(this.validateForm.value, true)
+      this.authService.loginForAdmin(this.validateForm.value)
         .subscribe({
           next: res => {
             this.msg.success(res.message);
