@@ -1,0 +1,16 @@
+<div *ngIf="vcnProfiles.length === 0" class="flex flex-col items-center py-3">
+  <p>Bạn chưa đăng ký hồ sơ tiêm chủng nào</p>
+  <a routerLink="/guest/register" nz-button nzType="primary" class="mt-3">Đăng ký tiêm</a>
+</div>
+<div *ngIf="vcnProfiles.length > 0" class="p-5">
+  <div nz-row>
+    <div nz-col nzSpan="6" class="p-3"
+         *ngFor="let profile of vcnProfiles">
+      <nz-card class="grow">
+        <p>Card content</p>
+        <p>Card content</p>
+        <p>Card content</p>
+      </nz-card>
+    </div>
+  </div>
+</div>

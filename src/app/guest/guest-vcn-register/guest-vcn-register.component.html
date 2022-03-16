@@ -1,0 +1,76 @@
+<nz-page-header
+  class="site-page-header"
+  (nzBack)="this.location.back()"
+  nzBackIcon
+  nzTitle="Đăng ký tiêm chủng">
+</nz-page-header>
+<form [formGroup]="registerForm" class="px-5 pb-5">
+  <div nz-row>
+    <div nz-col nzSpan="24" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label">Hồ sơ cá nhân</label>
+      <nz-select class="grow" formControlName="vcnPatientProfileId">
+        <nz-option nzValue="1" nzLabel="Jack"></nz-option>
+        <nz-option nzValue="2" nzLabel="Lucy"></nz-option>
+        <nz-option nzValue="3" nzLabel="Disabled"></nz-option>
+      </nz-select>
+      <a routerLink="/guest/profile/create" nz-button nzType="primary" class="ml-2">Tạo hồ sơ</a>
+    </div>
+    <div nz-col nzSpan="24" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label">Chọn gói tiêm chủng</label>
+      <nz-input-group nzPrefixIcon="search">
+        <input nz-input placeholder="Tìm kiếm" />
+      </nz-input-group>
+      <div></div>
+    </div>
+    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label">Chọn điểm tiêm</label>
+      <nz-select class="grow" nzPlaceHolder="Tỉnh/Thành phố">
+        <nz-option nzValue="1" nzLabel="Jack"></nz-option>
+        <nz-option nzValue="2" nzLabel="Lucy"></nz-option>
+        <nz-option nzValue="3" nzLabel="Disabled"></nz-option>
+      </nz-select>
+    </div>
+    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label"></label>
+      <nz-select class="grow" nzPlaceHolder="Quận/Huyện">
+        <nz-option nzValue="1" nzLabel="Jack"></nz-option>
+        <nz-option nzValue="2" nzLabel="Lucy"></nz-option>
+        <nz-option nzValue="3" nzLabel="Disabled"></nz-option>
+      </nz-select>
+    </div>
+    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label"></label>
+      <nz-select class="grow" nzPlaceHolder="Phường/Xã">
+        <nz-option nzValue="1" nzLabel="Jack"></nz-option>
+        <nz-option nzValue="2" nzLabel="Lucy"></nz-option>
+        <nz-option nzValue="3" nzLabel="Disabled"></nz-option>
+      </nz-select>
+    </div>
+    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label"></label>
+      <nz-select class="grow" nzPlaceHolder="Điểm tiêm" formControlName="selectedSiteId">
+        <nz-option nzValue="1" nzLabel="Jack"></nz-option>
+        <nz-option nzValue="2" nzLabel="Lucy"></nz-option>
+        <nz-option nzValue="3" nzLabel="Disabled"></nz-option>
+      </nz-select>
+    </div>
+    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label">Đặt lịch hẹn</label>
+      <nz-date-picker
+        nzShowTime
+        nzFormat="dd/MM/yyyy HH:mm:ss"
+        formControlName="expectedInjectionTime"
+        nzPlaceHolder="Chọn ngày hẹn"
+        class="grow"
+      ></nz-date-picker>
+    </div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="12" class="px-1 flex justify-end">
+      <button nz-button nzType="primary" (click)="submit()">Đăng ký</button>
+    </div>
+    <div nz-col nzSpan="12" class="px-1">
+      <button (click)="this.location.back()" nz-button>Hủy</button>
+    </div>
+  </div>
+</form>
