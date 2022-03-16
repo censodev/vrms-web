@@ -31,7 +31,9 @@ export class AuthService {
     return this.http.post<Res<{ token: string, expires: number }>>(endpoint, body)
       .pipe(
         tap(res => {
-          this.cookie.put(TOKEN_KEY, res.data?.token);
+          const now = new Date()
+          const expires = new Date(now.getTime() + res.data.expires);
+          this.cookie.put(TOKEN_KEY, res.data?.token, {expires: expires});
         }, err => {
           console.error(err);
         }),
