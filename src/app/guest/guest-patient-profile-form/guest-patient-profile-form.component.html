@@ -26,49 +26,39 @@
     <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label">Giới tính</label>
       <nz-select class="grow" formControlName="gender">
-        <nz-option nzValue="1" nzLabel="Nam"></nz-option>
-        <nz-option nzValue="2" nzLabel="Nữ"></nz-option>
-        <nz-option nzValue="3" nzLabel="Khác"></nz-option>
+        <nz-option [nzValue]="genderEnum.MALE" nzLabel="Nam"></nz-option>
+        <nz-option [nzValue]="genderEnum.FEMALE" nzLabel="Nữ"></nz-option>
+        <nz-option [nzValue]="genderEnum.OTHER" nzLabel="Khác"></nz-option>
       </nz-select>
     </div>
     <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label">Quốc gia</label>
       <nz-select class="grow" formControlName="countryId">
-        <nz-option nzValue="1" nzLabel="Nam"></nz-option>
-        <nz-option nzValue="2" nzLabel="Nữ"></nz-option>
-        <nz-option nzValue="3" nzLabel="Khác"></nz-option>
+        <nz-option *ngFor="let item of countries$ | async" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
       </nz-select>
     </div>
     <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label">Dân tộc</label>
       <nz-select class="grow" formControlName="nationId">
-        <nz-option nzValue="1" nzLabel="Nam"></nz-option>
-        <nz-option nzValue="2" nzLabel="Nữ"></nz-option>
-        <nz-option nzValue="3" nzLabel="Khác"></nz-option>
+        <nz-option *ngFor="let item of nations$ | async" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
       </nz-select>
     </div>
     <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label">Địa chỉ thường trú</label>
       <nz-select class="grow" formControlName="provinceId" nzPlaceHolder="Tỉnh/Thành phố">
-        <nz-option nzValue="1" nzLabel="Jack"></nz-option>
-        <nz-option nzValue="2" nzLabel="Lucy"></nz-option>
-        <nz-option nzValue="3" nzLabel="Disabled"></nz-option>
+        <nz-option *ngFor="let item of provinces$ | async" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
       </nz-select>
     </div>
     <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label"></label>
       <nz-select class="grow" formControlName="districtId" nzPlaceHolder="Quận/Huyện">
-        <nz-option nzValue="1" nzLabel="Jack"></nz-option>
-        <nz-option nzValue="2" nzLabel="Lucy"></nz-option>
-        <nz-option nzValue="3" nzLabel="Disabled"></nz-option>
+        <nz-option *ngFor="let item of districts$ | async" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
       </nz-select>
     </div>
     <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label"></label>
       <nz-select class="grow" formControlName="wardId" nzPlaceHolder="Phường/Xã">
-        <nz-option nzValue="1" nzLabel="Jack"></nz-option>
-        <nz-option nzValue="2" nzLabel="Lucy"></nz-option>
-        <nz-option nzValue="3" nzLabel="Disabled"></nz-option>
+        <nz-option *ngFor="let item of wards$ | async" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
       </nz-select>
     </div>
     <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">

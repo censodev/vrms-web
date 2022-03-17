@@ -15,6 +15,7 @@
       </nz-select>
       <a routerLink="/guest/profile/create" nz-button nzType="primary" class="ml-2">Tạo hồ sơ</a>
     </div>
+    <nz-divider></nz-divider>
     <div nz-col nzSpan="24" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label">Chọn gói tiêm chủng</label>
       <nz-input-group nzPrefixIcon="search">
@@ -24,34 +25,25 @@
     </div>
     <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label">Chọn điểm tiêm</label>
-      <nz-select class="grow" nzPlaceHolder="Tỉnh/Thành phố">
-        <nz-option nzValue="1" nzLabel="Jack"></nz-option>
-        <nz-option nzValue="2" nzLabel="Lucy"></nz-option>
-        <nz-option nzValue="3" nzLabel="Disabled"></nz-option>
+      <nz-select class="grow" nzPlaceHolder="Tỉnh/Thành phố" [formControl]="provinceFrmCtl">
+        <nz-option *ngFor="let item of provinces$ | async" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
       </nz-select>
     </div>
     <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label"></label>
-      <nz-select class="grow" nzPlaceHolder="Quận/Huyện">
-        <nz-option nzValue="1" nzLabel="Jack"></nz-option>
-        <nz-option nzValue="2" nzLabel="Lucy"></nz-option>
-        <nz-option nzValue="3" nzLabel="Disabled"></nz-option>
+      <nz-select class="grow" nzPlaceHolder="Quận/Huyện" [formControl]="districtFrmCtl">
+        <nz-option *ngFor="let item of districts$ | async" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
       </nz-select>
     </div>
     <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label"></label>
-      <nz-select class="grow" nzPlaceHolder="Phường/Xã">
-        <nz-option nzValue="1" nzLabel="Jack"></nz-option>
-        <nz-option nzValue="2" nzLabel="Lucy"></nz-option>
-        <nz-option nzValue="3" nzLabel="Disabled"></nz-option>
+      <nz-select class="grow" nzPlaceHolder="Phường/Xã" [formControl]="wardFrmCtl">
+        <nz-option *ngFor="let item of wards$ | async" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
       </nz-select>
     </div>
     <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label"></label>
       <nz-select class="grow" nzPlaceHolder="Điểm tiêm" formControlName="selectedSiteId">
-        <nz-option nzValue="1" nzLabel="Jack"></nz-option>
-        <nz-option nzValue="2" nzLabel="Lucy"></nz-option>
-        <nz-option nzValue="3" nzLabel="Disabled"></nz-option>
       </nz-select>
     </div>
     <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
