@@ -4,6 +4,9 @@ import {Location} from "@angular/common";
 import {concatMap, filter, Observable, of, tap} from "rxjs";
 import {MstDistrict, MstProvince, MstWard} from "../../core/payload/mst.payload";
 import {MstResourceService} from "../../core/services/mst-resource.service";
+import {PatientProfileRes} from "../../core/payload/profile.payload";
+import {ProfileService} from "../../core/services/profile.service";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-guest-vcn-profile-form',
@@ -16,6 +19,7 @@ export class GuestVcnProfileFormComponent implements OnInit {
   provinces$!: Observable<MstProvince[]>;
   districts$?: Observable<MstDistrict[]>;
   wards$?: Observable<MstWard[]>;
+  patientProfiles$!: Observable<PatientProfileRes[]>;
 
   provinceFrmCtl!: FormControl;
   districtFrmCtl!: FormControl;
@@ -23,7 +27,8 @@ export class GuestVcnProfileFormComponent implements OnInit {
 
   constructor(public location: Location,
               private fb: FormBuilder,
-              private mstRssService: MstResourceService) { }
+              private mstRssService: MstResourceService,
+              private profileService: ProfileService) { }
 
   ngOnInit(): void {
     this.provinceFrmCtl = new FormControl(null)
@@ -48,6 +53,8 @@ export class GuestVcnProfileFormComponent implements OnInit {
         tap(() => this.wardFrmCtl.setValue(null)),
         concatMap(districtId => districtId === null ? of([]) : this.mstRssService.getWards(districtId)),
       );
+    this.patientProfiles$ = this.profileService.getMyPatientProfiles()
+      .pipe(map(res => res.data.content));
   }
 
   submit() {
