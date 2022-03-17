@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common'
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {Location} from "@angular/common";
 
 @Component({
-  selector: 'app-guest-patient-profile-create',
-  templateUrl: './guest-patient-profile-create.component.html',
-  styleUrls: ['./guest-patient-profile-create.component.scss']
+  selector: 'app-guest-patient-profile-form',
+  templateUrl: './guest-patient-profile-form.component.html',
+  styleUrls: ['./guest-patient-profile-form.component.scss']
 })
-export class GuestPatientProfileCreateComponent implements OnInit {
-  createForm!: FormGroup;
+export class GuestPatientProfileFormComponent implements OnInit {
+  masterForm!: FormGroup;
 
   constructor(public location: Location,
               private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.createForm = this.fb.group({
+    this.masterForm = this.fb.group({
       idCard: [null],
       fullName: [null],
       birthday: [null],
@@ -29,6 +29,6 @@ export class GuestPatientProfileCreateComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.createForm.value)
+    console.log(this.masterForm.value)
   }
 }

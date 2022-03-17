@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 
 @Component({
-  selector: 'app-guest-vcn-register',
-  templateUrl: './guest-vcn-register.component.html',
-  styleUrls: ['./guest-vcn-register.component.scss']
+  selector: 'app-guest-vcn-profile-form',
+  templateUrl: './guest-vcn-profile-form.component.html',
+  styleUrls: ['./guest-vcn-profile-form.component.scss']
 })
-export class GuestVcnRegisterComponent implements OnInit {
-  registerForm!: FormGroup
+export class GuestVcnProfileFormComponent implements OnInit {
+  masterForm!: FormGroup
   constructor(public location: Location,
               private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.registerForm = this.fb.group({
+    this.masterForm = this.fb.group({
       vcnPatientProfileId: [null, [Validators.required]],
       expectedInjectionTime: [null, [Validators.required]],
       selectedSiteId: [null, [Validators.required]],
@@ -22,6 +21,6 @@ export class GuestVcnRegisterComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.registerForm.value)
+    console.log(this.masterForm.value)
   }
 }

@@ -1,0 +1,13 @@
+.profile-card-status {
+  padding: 0.25rem 1rem;
+  border-radius: 1rem;
+  border-width: 2px;
+  border-color: gray;
+  color: gray;
+  display: inline-block;
+}
+
+.profile-created {
+  border-color: theme('colors.green.500');
+  color: theme('colors.green.500');
+}

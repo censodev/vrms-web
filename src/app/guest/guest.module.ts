@@ -9,7 +9,6 @@ import {NzAvatarModule} from "ng-zorro-antd/avatar";
 import {NzDropDownModule} from "ng-zorro-antd/dropdown";
 import {NzIconModule} from "ng-zorro-antd/icon";
 import {NzButtonModule} from "ng-zorro-antd/button";
-import { GuestVcnRegisterComponent } from './guest-vcn-register/guest-vcn-register.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {NzSelectModule} from "ng-zorro-antd/select";
 import {NzGridModule} from "ng-zorro-antd/grid";
@@ -17,8 +16,15 @@ import {NzPageHeaderModule} from "ng-zorro-antd/page-header";
 import { GuestPatientProfileComponent } from './guest-patient-profile/guest-patient-profile.component';
 import {NzDatePickerModule} from "ng-zorro-antd/date-picker";
 import {NzInputModule} from "ng-zorro-antd/input";
-import { GuestPatientProfileCreateComponent } from './guest-patient-profile-create/guest-patient-profile-create.component';
 import {NzCardModule} from "ng-zorro-antd/card";
+import {NzTypographyModule} from "ng-zorro-antd/typography";
+import {NzTableModule} from "ng-zorro-antd/table";
+import {NzDividerModule} from "ng-zorro-antd/divider";
+import { GuestVcnProfileCardComponent } from './guest-vcn-profile-card/guest-vcn-profile-card.component';
+import { GuestVcnProfileFormComponent } from './guest-vcn-profile-form/guest-vcn-profile-form.component';
+import { GuestVcnProfileDetailComponent } from './guest-vcn-profile-detail/guest-vcn-profile-detail.component';
+import { GuestPatientProfileFormComponent } from './guest-patient-profile-form/guest-patient-profile-form.component';
+import { GuestPatientProfileDetailComponent } from './guest-patient-profile-detail/guest-patient-profile-detail.component';
 
 
 @NgModule({
@@ -26,24 +32,30 @@ import {NzCardModule} from "ng-zorro-antd/card";
     GuestComponent,
     GuestDashboardComponent,
     GuestNavbarComponent,
-    GuestVcnRegisterComponent,
     GuestPatientProfileComponent,
-    GuestPatientProfileCreateComponent
+    GuestVcnProfileCardComponent,
+    GuestVcnProfileFormComponent,
+    GuestVcnProfileDetailComponent,
+    GuestPatientProfileFormComponent,
+    GuestPatientProfileDetailComponent
   ],
-    imports: [
-        CommonModule,
-        GuestRoutingModule,
-        NzAvatarModule,
-        NzDropDownModule,
-        NzIconModule,
-        NzButtonModule,
-        ReactiveFormsModule,
-        NzSelectModule,
-        NzGridModule,
-        NzPageHeaderModule,
-        NzDatePickerModule,
-        NzInputModule,
-        NzCardModule,
-    ]
+  imports: [
+    CommonModule,
+    GuestRoutingModule,
+    NzAvatarModule,
+    NzDropDownModule,
+    NzIconModule,
+    NzButtonModule,
+    ReactiveFormsModule,
+    NzSelectModule,
+    NzGridModule,
+    NzPageHeaderModule,
+    NzDatePickerModule,
+    NzInputModule,
+    NzCardModule,
+    NzTypographyModule,
+    NzTableModule,
+    NzDividerModule,
+  ]
 })
 export class GuestModule { }
