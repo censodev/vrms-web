@@ -13,7 +13,6 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {NzSelectModule} from "ng-zorro-antd/select";
 import {NzGridModule} from "ng-zorro-antd/grid";
 import {NzPageHeaderModule} from "ng-zorro-antd/page-header";
-import { GuestPatientProfileComponent } from './guest-patient-profile/guest-patient-profile.component';
 import {NzDatePickerModule} from "ng-zorro-antd/date-picker";
 import {NzInputModule} from "ng-zorro-antd/input";
 import {NzCardModule} from "ng-zorro-antd/card";
@@ -32,7 +31,6 @@ import { GuestPatientProfileDetailComponent } from './guest-patient-profile-deta
     GuestComponent,
     GuestDashboardComponent,
     GuestNavbarComponent,
-    GuestPatientProfileComponent,
     GuestVcnProfileCardComponent,
     GuestVcnProfileFormComponent,
     GuestVcnProfileDetailComponent,

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Location} from "@angular/common";
 import {MstResourceService} from "../../core/services/mst-resource.service";
 import {concatMap, filter, Observable, of, tap} from "rxjs";
@@ -33,16 +33,16 @@ export class GuestPatientProfileFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.masterForm = this.fb.group({
-      idCard: [null],
-      fullName: [null],
-      birthday: [null],
-      gender: [null],
-      countryId: [null],
-      nationId: [null],
-      provinceId: [null],
-      districtId: [null],
-      wardId: [null],
-      address: [null],
+      idCard: [null, [Validators.required]],
+      fullName: [null, [Validators.required]],
+      birthday: [null, [Validators.required]],
+      gender: [null, [Validators.required]],
+      countryId: [null, [Validators.required]],
+      nationId: [null, [Validators.required]],
+      provinceId: [null, [Validators.required]],
+      districtId: [null, [Validators.required]],
+      wardId: [null, [Validators.required]],
+      address: [null, [Validators.required]],
     });
     this.countries$ = this.mstRssService.getCountries();
     this.nations$ = this.mstRssService.getNations();

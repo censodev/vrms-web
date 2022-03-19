@@ -8,10 +8,12 @@
   <div nz-row>
     <div nz-col nzSpan="24" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label">Hồ sơ cá nhân <span class="text-red-500">*</span></label>
-      <nz-select class="grow" formControlName="patientProfileId">
-        <nz-option *ngFor="let profile of patientProfiles$ | async" [nzValue]="profile.id" [nzLabel]="profile.fullName + ' - ' + profile.idCard"></nz-option>
-      </nz-select>
-      <a routerLink="/guest/profile/create" nz-button nzType="primary" class="ml-2">Tạo hồ sơ</a>
+      <div class="flex w-full">
+        <nz-select class="grow" formControlName="patientProfileId">
+          <nz-option *ngFor="let profile of patientProfiles$ | async" [nzValue]="profile.id" [nzLabel]="profile.fullName"></nz-option>
+        </nz-select>
+        <a routerLink="/guest/profile/create" nz-button nzType="primary" class="ml-2">Tạo hồ sơ</a>
+      </div>
     </div>
     <app-guest-patient-profile-detail class="px-5" *ngIf="selectedProfile" [profile]="selectedProfile"></app-guest-patient-profile-detail>
     <nz-divider></nz-divider>
@@ -20,29 +22,29 @@
       <nz-input-group nzPrefixIcon="search">
         <input nz-input placeholder="Tìm kiếm" [formControl]="vcnPkgFrmCtl"/>
       </nz-input-group>
-      <div class="w-full">
-        <nz-card *ngFor="let pkg of vcnPackages$ | async"
-                 class="flex flex-col mt-2 w-full"
-                 [class.selected-pkg]="pkg.id === masterForm.value.selectedPackageId"
-                 (click)="selectPkg(pkg)">
-          <div class="font-bold">{{pkg.name}}</div>
-          <div class="text-green-500 text-2xl">{{pkg.price | currency: 'VND'}}</div>
-          <div class="text-gray-500 pt-2">{{pkg.desc}}</div>
-        </nz-card>
-      </div>
+        <div nz-row class="mt-2">
+          <div nz-col nzMd="12" nzXs="24" class="p-1" *ngFor="let pkg of vcnPackages$ | async">
+            <nz-card class="flex flex-col w-full h-full border-2"
+                     [class.selected-pkg]="pkg.id === masterForm.value.selectedPackageId"
+                     (click)="selectPkg(pkg)">
+              <div class="font-bold">{{pkg.name}}</div>
+              <div class="text-green-500 text-2xl">{{pkg.price | currency: 'VND'}}</div>
+              <div class="text-gray-500 pt-2">{{pkg.desc}}</div>
+            </nz-card>
+          </div>
+        </div>
     </div>
     <nz-divider></nz-divider>
-    <div nz-col nzSpan="18" class="form-flex-group mb-3 px-1">
+    <div nz-col nzMd="18" nzXs="24" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label">Chọn điểm tiêm <span class="text-red-500">*</span></label>
       <nz-select class="grow" nzPlaceHolder="Điểm tiêm" formControlName="selectedSiteId">
         <nz-option *ngFor="let site of vcnSites$ | async" [nzValue]="site.id" [nzLabel]="site.name + ' (' + site.address + ')'"></nz-option>
       </nz-select>
     </div>
-    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
+    <div nz-col nzMd="6" nzXs="24" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label">Đặt lịch hẹn <span class="text-red-500">*</span></label>
       <nz-date-picker
-        nzShowTime
-        nzFormat="dd/MM/yyyy HH:mm:ss"
+        nzFormat="dd/MM/yyyy"
         formControlName="expectedInjectionTime"
         nzPlaceHolder="Chọn ngày hẹn"
         class="grow"

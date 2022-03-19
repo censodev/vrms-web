@@ -6,16 +6,16 @@
 </nz-page-header>
 <form [formGroup]="masterForm" class="px-5 pb-5">
   <div nz-row>
-    <div nz-col nzSpan="12" class="form-flex-group mb-3 px-1">
-      <label class="form-flex-label">Số CMND/CCCD</label>
+    <div nz-col nzMd="12" nzXs="24" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label">Số CMND/CCCD <span class="text-red-500">*</span></label>
       <input nz-input formControlName="idCard"/>
     </div>
-    <div nz-col nzSpan="12" class="form-flex-group mb-3 px-1">
-      <label class="form-flex-label">Họ và tên</label>
+    <div nz-col nzMd="12" nzXs="24" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label">Họ và tên <span class="text-red-500">*</span></label>
       <input nz-input formControlName="fullName" />
     </div>
-    <div nz-col nzSpan="6" class="form-flex-group mb-3 gap-x-2 px-1">
-      <label class="form-flex-label">Ngày sinh</label>
+    <div nz-col nzMd="6" nzXs="12" class="form-flex-group mb-3 gap-x-2 px-1">
+      <label class="form-flex-label">Ngày sinh <span class="text-red-500">*</span></label>
       <nz-date-picker
         class="grow"
         nzFormat="dd/MM/yyyy"
@@ -23,52 +23,49 @@
         nzPlaceHolder="Chọn ngày"
       ></nz-date-picker>
     </div>
-    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
-      <label class="form-flex-label">Giới tính</label>
+    <div nz-col nzMd="6" nzXs="12" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label">Giới tính <span class="text-red-500">*</span></label>
       <nz-select class="grow" formControlName="gender">
         <nz-option [nzValue]="genderEnum.MALE" nzLabel="Nam"></nz-option>
         <nz-option [nzValue]="genderEnum.FEMALE" nzLabel="Nữ"></nz-option>
         <nz-option [nzValue]="genderEnum.OTHER" nzLabel="Khác"></nz-option>
       </nz-select>
     </div>
-    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
-      <label class="form-flex-label">Quốc gia</label>
+    <div nz-col nzMd="6" nzXs="12" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label">Quốc gia <span class="text-red-500">*</span></label>
       <nz-select class="grow" formControlName="countryId">
         <nz-option *ngFor="let item of countries$ | async" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
       </nz-select>
     </div>
-    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
-      <label class="form-flex-label">Dân tộc</label>
+    <div nz-col nzMd="6" nzXs="12" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label">Dân tộc <span class="text-red-500">*</span></label>
       <nz-select class="grow" formControlName="nationId">
         <nz-option *ngFor="let item of nations$ | async" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
       </nz-select>
     </div>
-    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
-      <label class="form-flex-label">Địa chỉ thường trú</label>
+    <div nz-col nzMd="6" nzXs="24" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label">Địa chỉ thường trú <span class="text-red-500">*</span></label>
       <nz-select class="grow" formControlName="provinceId" nzPlaceHolder="Tỉnh/Thành phố">
         <nz-option *ngFor="let item of provinces$ | async" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
       </nz-select>
     </div>
-    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
-      <label class="form-flex-label"></label>
+    <div nz-col nzMd="6" nzXs="24" class="form-flex-group mb-3 px-1">
       <nz-select class="grow" formControlName="districtId" nzPlaceHolder="Quận/Huyện">
         <nz-option *ngFor="let item of districts$ | async" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
       </nz-select>
     </div>
-    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
-      <label class="form-flex-label"></label>
+    <div nz-col nzMd="6" nzXs="24" class="form-flex-group mb-3 px-1">
       <nz-select class="grow" formControlName="wardId" nzPlaceHolder="Phường/Xã">
         <nz-option *ngFor="let item of wards$ | async" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
       </nz-select>
     </div>
-    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
-      <label class="form-flex-label"></label>
+    <div nz-col nzMd="6" nzXs="24" class="form-flex-group mb-3 px-1">
       <input nz-input formControlName="address" placeholder="Số nhà, ngõ/ngách, đường" />
     </div>
   </div>
   <div nz-row class="mt-3">
     <div nz-col nzSpan="12" class="px-1 flex justify-end">
-      <button nz-button nzType="primary" (click)="submit()">Tạo mới</button>
+      <button nz-button nzType="primary" (click)="submit()" [disabled]="masterForm.invalid">Tạo mới</button>
     </div>
     <div nz-col nzSpan="12" class="px-1">
       <button (click)="this.location.back()" nz-button>Hủy</button>

@@ -2,12 +2,22 @@
   padding: 0.25rem 1rem;
   border-radius: 1rem;
   border-width: 2px;
-  border-color: gray;
-  color: gray;
+  border-color: theme('colors.blue.500');
+  color: theme('colors.blue.500');
   display: inline-block;
 }
 
-.profile-created {
+.profile-success {
   border-color: theme('colors.green.500');
   color: theme('colors.green.500');
+}
+
+.profile-danger {
+  border-color: theme('colors.red.500');
+  color: theme('colors.red.500');
+}
+
+.profile-process {
+  border-color: theme('colors.yellow.500');
+  color: theme('colors.yellow.500');
 }

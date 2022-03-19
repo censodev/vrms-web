@@ -1,5 +1,5 @@
 <div class="flex items-center justify-between px-3 py-2 border-b">
-  <img width="50" src="assets/images/Ministry_of_Health_(Vietnam)_Logo.svg.png" alt="">
+  <img routerLink="/guest" width="50" src="assets/images/Ministry_of_Health_(Vietnam)_Logo.svg.png" alt="">
   <nz-avatar [nzSize]="40" nzIcon="user" nz-dropdown [nzDropdownMenu]="menuProfile"></nz-avatar>
 </div>
 <nz-dropdown-menu #menuProfile="nzDropdownMenu">
@@ -7,15 +7,6 @@
     <li nz-menu-item class="text-green-500" routerLink="/guest/register">
       <i nz-icon nzType="plus"></i>
       <span class="pl-2">Đăng ký tiêm</span>
-    </li>
-    <li nz-menu-divider></li>
-    <li nz-menu-item routerLink="/guest">
-      <i nz-icon nzType="profile"></i>
-      <span class="pl-2">Hồ sơ tiêm chủng</span>
-    </li>
-    <li nz-menu-item routerLink="/guest/profile">
-      <i nz-icon nzType="user"></i>
-      <span class="pl-2">Hồ sơ cá nhân</span>
     </li>
     <li nz-menu-divider></li>
     <li nz-menu-item class="text-red-500" (click)="logout()">

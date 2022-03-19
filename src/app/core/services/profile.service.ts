@@ -2,7 +2,12 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Res} from "../payload/res";
-import {PatientProfileCreateReq, PatientProfileRes, VcnProfileCreateReq} from "../payload/profile.payload";
+import {
+  PatientProfileCreateReq,
+  PatientProfileRes,
+  VcnProfileCreateReq,
+  VcnProfileRes
+} from "../payload/profile.payload";
 import {environment} from "../../../environments/environment";
 import {PageRes} from "../payload/page.res";
 
@@ -23,5 +28,9 @@ export class ProfileService {
 
   createVcnProfile(body: VcnProfileCreateReq): Observable<Res<any>> {
     return this.http.post<Res<any>>(`${environment.apiEndpoint}/profile/vcn`, body);
+  }
+
+  getMyVcnProfiles(): Observable<Res<PageRes<VcnProfileRes>>> {
+    return this.http.get<Res<PageRes<VcnProfileRes>>>(`${environment.apiEndpoint}/profile/vcn/me`);
   }
 }

@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {VcnProfileStatusEnum} from "../../core/enums/vcn-profile-status.enum";
+import {Observable} from "rxjs";
+import {VcnProfileRes} from "../../core/payload/profile.payload";
+import {ProfileService} from "../../core/services/profile.service";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-guest-dashboard',
@@ -7,29 +11,15 @@ import {VcnProfileStatusEnum} from "../../core/enums/vcn-profile-status.enum";
   styleUrls: ['./guest-dashboard.component.scss']
 })
 export class GuestDashboardComponent implements OnInit {
-  vcnProfileStatusEnum = VcnProfileStatusEnum
-  vcnProfiles = [
-    {
-      id: 0,
-      expectedInjectionTime: new Date(),
-      status: VcnProfileStatusEnum.CREATED,
-      patientProfileId: 0,
-      selectedPackageId: 0,
-      selectedSiteId: 0
-    },
-    {
-      id: 0,
-      expectedInjectionTime: new Date(),
-      status: VcnProfileStatusEnum.CREATED,
-      patientProfileId: 0,
-      selectedPackageId: 0,
-      selectedSiteId: 0
-    },
-  ];
+  vcnProfiles!: VcnProfileRes[];
 
-  constructor() { }
+  constructor(private profileService: ProfileService) {
+  }
 
   ngOnInit(): void {
+    this.profileService.getMyVcnProfiles()
+      .pipe(map(res => res.data.content))
+      .subscribe(data => this.vcnProfiles = data)
   }
 
 }

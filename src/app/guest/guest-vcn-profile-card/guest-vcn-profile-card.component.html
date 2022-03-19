@@ -1,19 +1,33 @@
 <nz-card class="grow" [nzActions]="[actionDetails, actionEdit, actionCancel]">
-  <h3 nz-typography>Bùi Việt Phương</h3>
-  <div class="profile-card-status profile-created">Đã hoàn thành</div>
+  <h3 nz-typography>{{profile.patientProfile.fullName}}</h3>
+  <ng-container [ngSwitch]="profile.status">
+    <div *ngSwitchCase="vcnProfileStatusEnum.CREATED" class="profile-card-status">Đã đăng ký</div>
+    <div *ngSwitchCase="vcnProfileStatusEnum.CHECKED_IN" class="profile-card-status profile-process">Đã đến điểm tiêm</div>
+    <div *ngSwitchCase="vcnProfileStatusEnum.TESTED_FAILED" class="profile-card-status profile-danger">Khám sàng lọc thất bại</div>
+    <div *ngSwitchCase="vcnProfileStatusEnum.TESTED_PASS" class="profile-card-status profile-process">Khám sàng lọc thành công</div>
+    <div *ngSwitchCase="vcnProfileStatusEnum.PAID" class="profile-card-status profile-process">Đã thanh toán</div>
+    <div *ngSwitchCase="vcnProfileStatusEnum.INJECTED" class="profile-card-status profile-process">Đã tiêm</div>
+    <div *ngSwitchCase="vcnProfileStatusEnum.COMPLETED" class="profile-card-status profile-success">Đã hoàn thành tiêm</div>
+    <div *ngSwitchCase="vcnProfileStatusEnum.CANCELED" class="profile-card-status profile-danger">Đã hủy tiêm</div>
+    <div *ngSwitchCase="vcnProfileStatusEnum.FAILED" class="profile-card-status profile-danger">Triệu chứng xấu</div>
+  </ng-container>
   <table class="mt-3">
     <tbody>
     <tr>
+      <td class="pr-2 pb-2">Ngày hẹn tiêm:</td>
+      <td class="pb-2 font-bold">{{profile.expectedInjectionTime | date: 'dd/MM/yyyy'}}</td>
+    </tr>
+    <tr>
       <td class="pr-2 pb-2">Ngày tiêm:</td>
-      <td class="pb-2 font-bold">11/11/2022</td>
+      <td class="pb-2 font-bold">{{(profile.injectionTime | date: 'dd/MM/yyyy') || 'Chưa cập nhật'}}</td>
     </tr>
     <tr>
       <td class="pr-2 pb-2">Gói tiêm chủng:</td>
-      <td class="pb-2 font-bold">Pfizer (Covid-19)</td>
+      <td class="pb-2 font-bold">{{profile.selectedPackage.name}}</td>
     </tr>
     <tr>
       <td class="pr-2">Điểm tiêm:</td>
-      <td class="font-bold">BV Bạch Mai</td>
+      <td class="font-bold">{{profile.selectedSite.name}}</td>
     </tr>
     </tbody>
   </table>

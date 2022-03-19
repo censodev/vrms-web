@@ -1,5 +1,6 @@
 import {GenderEnum} from "../enums/gender.enum";
 import {StatusEnum} from "../enums/status.enum";
+import {VcnPackageRes, VcnSiteRes} from "./vcn-rss.payload";
 
 export interface PatientProfileRes {
   id: number;
@@ -34,4 +35,17 @@ export interface VcnProfileCreateReq {
   patientProfileId: number;
   selectedPackageId: number;
   selectedSiteId: number;
+}
+
+export interface VcnProfileRes {
+  id: number;
+  expectedInjectionTime: Date;
+  injectionTime: Date;
+  status: string;
+  patientProfileId: number;
+  patientProfile: PatientProfileRes;
+  selectedPackageId: number;
+  selectedPackage: VcnPackageRes;
+  selectedSiteId: number;
+  selectedSite: VcnSiteRes;
 }
