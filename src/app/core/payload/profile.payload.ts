@@ -28,3 +28,10 @@ export interface PatientProfileCreateReq {
   wardId: number;
   address: string;
 }
+
+export interface VcnProfileCreateReq {
+  expectedInjectionTime: Date;
+  patientProfileId: number;
+  selectedPackageId: number;
+  selectedSiteId: number;
+}
