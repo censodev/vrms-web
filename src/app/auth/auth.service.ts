@@ -19,25 +19,29 @@ export class AuthService {
               private http: HttpClient) {
   }
 
-  login(body: { username: string, password: string, remember: boolean }, forAdmin = false): Observable<Res<{ token: string, expires: number }>> {
-    const endPoint = forAdmin
-      ? `${environment.apiEndpoint}/auth/admin/login`
-      : `${environment.apiEndpoint}/auth/login`;
-    return this.http.post<Res<{ token: string, expires: number }>>(endPoint, {
-      username: body.username,
-      password: body.password
-    })
+  loginForAdmin(body: { username: string, password: string, remember: boolean }): Observable<Res<{ token: string, expires: number }>> {
+    return this.login(`${environment.apiEndpoint}/auth/admin/login`, body);
+  }
+
+  loginForGuest(body: { phone: string, otp: string }): Observable<Res<{ token: string, expires: number }>> {
+    return this.login(`${environment.apiEndpoint}/auth/login`, body);
+  }
+
+  private login(endpoint: string, body: any): Observable<Res<{ token: string, expires: number }>> {
+    return this.http.post<Res<{ token: string, expires: number }>>(endpoint, body)
       .pipe(
         tap(res => {
-          if (body.remember) {
-            this.cookie.put(TOKEN_KEY, res.data?.token);
-          } else {
-            this.cookie.put(TOKEN_KEY, res.data?.token, {expires: new Date(res.data?.expires ?? 86_400_000)});
-          }
+          const now = new Date()
+          const expires = new Date(now.getTime() + res.data.expires);
+          this.cookie.put(TOKEN_KEY, res.data?.token, {expires: expires});
         }, err => {
           console.error(err);
         }),
       );
+  }
+
+  getOTP(phone: string): Observable<Res<any>> {
+    return this.http.post<Res<any>>(`${environment.apiEndpoint}/auth/otp`, {phone: phone})
   }
 
   logout(): Observable<boolean> {

@@ -1,14 +1,21 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {GuestComponent} from "./guest.component";
 import {AuthGuard} from "../auth/auth.guard";
+import {GuestDashboardComponent} from "./guest-dashboard/guest-dashboard.component";
+import {GuestVcnProfileFormComponent} from "./guest-vcn-profile-form/guest-vcn-profile-form.component";
+import {GuestPatientProfileFormComponent} from "./guest-patient-profile-form/guest-patient-profile-form.component";
 
 const routes: Routes = [
   {
     path: '',
     component: GuestComponent,
     canActivate: [AuthGuard],
-    children: [],
+    children: [
+      {path: '', component: GuestDashboardComponent},
+      {path: 'register', component: GuestVcnProfileFormComponent},
+      {path: 'profile/create', component: GuestPatientProfileFormComponent},
+    ],
   }
 ];
 
@@ -16,4 +23,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class GuestRoutingModule { }
+export class GuestRoutingModule {
+}

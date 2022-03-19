@@ -1,27 +1,28 @@
-<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
-  <nz-form-item>
-    <nz-form-control nzErrorTip="Vui lòng điền tên đăng nhập!">
-      <nz-input-group nzPrefixIcon="user">
-        <input type="text" nz-input formControlName="userName" placeholder="Tên đăng nhập" />
-      </nz-input-group>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-control nzErrorTip="Vui lòng nhập mật khẩu!">
-      <nz-input-group nzPrefixIcon="lock">
-        <input type="password" nz-input formControlName="password" placeholder="Mật khẩu" />
-      </nz-input-group>
-    </nz-form-control>
-  </nz-form-item>
-  <div nz-row class="login-form-margin">
-    <div nz-col [nzSpan]="12">
-      <label nz-checkbox formControlName="remember">
-        <span>Lưu mật khẩu</span>
-      </label>
-    </div>
-    <div nz-col [nzSpan]="12">
-      <a class="login-form-forgot">Quên mật khẩu</a>
-    </div>
+<div class="flex justify-center items-center h-full">
+  <div class="grow flex justify-center items-center hidden sm:block">
+    <img src="assets/images/policy-recommendations-vaccine-illustration.png"/>
   </div>
-  <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Đăng nhập</button>
-</form>
+  <div class="flex flex-col justify-center grow items-center px-10">
+    <img width="100" src="assets/images/Ministry_of_Health_(Vietnam)_Logo.svg.png">
+    <form nz-form [formGroup]="validateForm" class="login-form mt-6">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Vui lòng điền số điện thoại!">
+          <nz-input-group nzPrefixIcon="phone">
+            <input type="text" nz-input formControlName="phone" placeholder="Số điện thoại (+84987654321)" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <div class="flex gap-2">
+        <nz-form-item class="grow">
+          <nz-form-control nzErrorTip="Vui lòng nhập mã OTP!">
+            <nz-input-group nzPrefixIcon="lock">
+              <input type="password" nz-input formControlName="otp" placeholder="Mã OTP" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <button [nzLoading]="getOTPLoading" nz-button class="login-form-margin grow" [nzType]="'primary'" (click)="getOTP()">Lấy OTP</button>
+      </div>
+      <button [nzLoading]="loading" nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="submitForm()">Đăng nhập</button>
+    </form>
+  </div>
+</div>
