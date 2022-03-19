@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Location} from "@angular/common";
 import {concatMap, filter, Observable, of, tap} from "rxjs";
@@ -20,6 +20,7 @@ export class GuestVcnProfileFormComponent implements OnInit {
   districts$?: Observable<MstDistrict[]>;
   wards$?: Observable<MstWard[]>;
   patientProfiles$!: Observable<PatientProfileRes[]>;
+  selectedProfile?: PatientProfileRes;
 
   provinceFrmCtl!: FormControl;
   districtFrmCtl!: FormControl;
@@ -28,7 +29,8 @@ export class GuestVcnProfileFormComponent implements OnInit {
   constructor(public location: Location,
               private fb: FormBuilder,
               private mstRssService: MstResourceService,
-              private profileService: ProfileService) { }
+              private profileService: ProfileService) {
+  }
 
   ngOnInit(): void {
     this.provinceFrmCtl = new FormControl(null)
@@ -55,6 +57,13 @@ export class GuestVcnProfileFormComponent implements OnInit {
       );
     this.patientProfiles$ = this.profileService.getMyPatientProfiles()
       .pipe(map(res => res.data.content));
+    this.masterForm.get('vcnPatientProfileId')?.valueChanges
+      .pipe(filter(id => id !== null))
+      .subscribe(id => {
+        this.patientProfiles$.subscribe(profiles => {
+          this.selectedProfile = profiles.find(prf => prf.id === id)
+        })
+      })
   }
 
   submit() {

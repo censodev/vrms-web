@@ -1,1 +1,35 @@
-<p>guest-patient-profile-detail works!</p>
+<div>
+  <div nz-row>
+    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label">Họ và tên</label>
+      <div>{{profile.fullName}}</div>
+    </div>
+    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label">Số CMND/CCCD</label>
+      <div>{{profile.idCard}}</div>
+    </div>
+
+    <div nz-col nzSpan="6" class="form-flex-group mb-3 gap-x-2 px-1">
+      <label class="form-flex-label">Ngày sinh</label>
+      <div>{{profile.birthday | date:'dd/MM/yyyy'}}</div>
+    </div>
+    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label">Giới tính</label>
+      <div *ngIf="profile.gender === genderEnum.MALE">Nam</div>
+      <div *ngIf="profile.gender === genderEnum.FEMALE">Nữ</div>
+      <div *ngIf="profile.gender === genderEnum.OTHER">Khác</div>
+    </div>
+    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label">Quốc gia</label>
+      <div>{{(country$|async)?.name}}</div>
+    </div>
+    <div nz-col nzSpan="6" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label">Dân tộc</label>
+      <div>{{(nation$|async)?.name}}</div>
+    </div>
+    <div nz-col nzSpan="12" class="form-flex-group mb-3 px-1">
+      <label class="form-flex-label">Địa chỉ thường trú</label>
+      <div>{{(province$|async)?.name}}, {{(district$|async)?.name}}, {{(ward$|async)?.name}}, {{profile.address}}</div>
+    </div>
+  </div>
+</div>

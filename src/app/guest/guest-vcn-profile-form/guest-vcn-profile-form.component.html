@@ -8,11 +8,12 @@
   <div nz-row>
     <div nz-col nzSpan="24" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label">Hồ sơ cá nhân</label>
-      <nz-select class="grow" formControlName="vcnPatientProfileId" *ngFor="let profile of patientProfiles$ | async">
-        <nz-option [nzValue]="profile.id" [nzLabel]="profile.fullName + ' - ' + profile.idCard"></nz-option>
+      <nz-select class="grow" formControlName="vcnPatientProfileId">
+        <nz-option *ngFor="let profile of patientProfiles$ | async" [nzValue]="profile.id" [nzLabel]="profile.fullName + ' - ' + profile.idCard"></nz-option>
       </nz-select>
       <a routerLink="/guest/profile/create" nz-button nzType="primary" class="ml-2">Tạo hồ sơ</a>
     </div>
+    <app-guest-patient-profile-detail class="px-5" *ngIf="selectedProfile" [profile]="selectedProfile"></app-guest-patient-profile-detail>
     <nz-divider></nz-divider>
     <div nz-col nzSpan="24" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label">Chọn gói tiêm chủng</label>
