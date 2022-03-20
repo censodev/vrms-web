@@ -1,4 +1,4 @@
-<nz-card class="grow" [nzActions]="[actionDetails, actionEdit, actionCancel]">
+<nz-card class="grow" [nzActions]="[actionDetails, actionCancel]">
   <h3 nz-typography>{{profile.patientProfile.fullName}}</h3>
   <ng-container [ngSwitch]="profile.status">
     <div *ngSwitchCase="vcnProfileStatusEnum.CREATED" class="profile-card-status">Đã đăng ký</div>
@@ -33,9 +33,6 @@
   </table>
   <ng-template #actionDetails>
     <i class="hover:text-blue-500" nz-icon nzType="search" nzTheme="outline"></i>
-  </ng-template>
-  <ng-template #actionEdit>
-    <i class="hover:text-yellow-500" nz-icon nzType="edit" nzTheme="outline"></i>
   </ng-template>
   <ng-template #actionCancel>
     <i class="hover:text-red-500" nz-icon nzType="close" nzTheme="outline"></i>

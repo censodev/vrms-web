@@ -1,14 +1,14 @@
-<div style="height: 46px">
+<div style="height: 60px">
   <div class="fixed bottom-0 w-full border-t">
-    <ul nz-menu nzMode="horizontal" class="flex justify-center">
+    <ul style="height: 60px" nz-menu nzMode="horizontal" class="flex justify-center">
       <li nz-menu-item nzMatchRouter routerLink="/guest/dashboard">
-        <i nz-icon nzType="home"></i>
+        <i nz-icon nzType="home" class="text-2xl"></i>
       </li>
       <li nz-menu-item nzMatchRouter routerLink="/guest/register">
-        <i nz-icon nzType="plus"></i>
+        <i nz-icon nzType="plus" class="text-2xl"></i>
       </li>
-      <li nz-menu-item>
-        <i nz-icon nzType="logout" class="text-red-500"></i>
+      <li nz-menu-item nzDisabled (click)="confirmLogout()">
+        <i nz-icon nzType="logout" class="text-red-500 text-2xl"></i>
       </li>
     </ul>
   </div>

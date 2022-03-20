@@ -28,6 +28,7 @@ import {
 import {GuestNavbarMobileComponent} from './guest-navbar-mobile/guest-navbar-mobile.component';
 import {GuestHeaderMobileComponent} from './guest-header-mobile/guest-header-mobile.component';
 import {GuestHeaderComponent} from './guest-header/guest-header.component';
+import {NzModalModule} from "ng-zorro-antd/modal";
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import {GuestHeaderComponent} from './guest-header/guest-header.component';
     NzTypographyModule,
     NzTableModule,
     NzDividerModule,
+    NzModalModule,
   ]
 })
 export class GuestModule {

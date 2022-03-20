@@ -1,4 +1,4 @@
-<div style="height: 76px">
+<div style="height: 67px">
   <div style="z-index: 10" class="fixed top-0 w-full bg-white flex items-center px-3 py-2 border-b">
     <img routerLink="/guest" width="50" src="assets/images/Ministry_of_Health_(Vietnam)_Logo.svg.png" alt="">
     <div class="text-xl pl-3">{{appName}}</div>
@@ -12,7 +12,7 @@
       <span class="pl-2">Đăng ký tiêm</span>
     </li>
     <li nz-menu-divider></li>
-    <li nz-menu-item class="text-red-500" (click)="logout()">
+    <li nz-menu-item class="text-red-500" (click)="logout.emit()">
       <i nz-icon nzType="logout"></i>
       <span class="pl-2">Đăng xuất</span>
     </li>

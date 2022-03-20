@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {NzModalService} from "ng-zorro-antd/modal";
 
 @Component({
   selector: 'app-guest-navbar-mobile',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./guest-navbar-mobile.component.scss']
 })
 export class GuestNavbarMobileComponent implements OnInit {
+  @Output() logout = new EventEmitter();
 
-  constructor() { }
+  constructor(private modal: NzModalService) {
+  }
 
   ngOnInit(): void {
   }
 
+  confirmLogout() {
+    this.modal.confirm({
+      nzTitle: 'Bạn có chắc chắn muốn đăng xuất?',
+      nzOkText: 'Có',
+      nzCancelText: 'Không',
+      nzOnOk: () => this.logout.emit(),
+    });
+  }
 }

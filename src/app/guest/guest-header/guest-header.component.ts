@@ -1,7 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {AuthService} from "../../auth/auth.service";
-import {Router} from "@angular/router";
-import {NzMessageService} from "ng-zorro-antd/message";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-guest-header',
@@ -10,24 +7,11 @@ import {NzMessageService} from "ng-zorro-antd/message";
 })
 export class GuestHeaderComponent implements OnInit {
   @Input() appName!: string;
+  @Output() logout = new EventEmitter();
 
-  constructor(private auth: AuthService,
-              private router: Router,
-              private message: NzMessageService) { }
-
-  ngOnInit(): void {
+  constructor() {
   }
 
-  logout() {
-    this.auth.logout()
-      .subscribe(res => {
-          if (res) {
-            this.router.navigate(['/auth/login'])
-              .then(() => this.message.success('Đăng xuất thành công'));
-          } else {
-            this.message.error('Đăng xuất thất bại');
-          }
-        }
-      )
+  ngOnInit(): void {
   }
 }
