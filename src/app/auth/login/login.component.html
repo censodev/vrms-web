@@ -1,28 +1,28 @@
-<div class="flex justify-center items-center h-full">
-  <div class="grow flex justify-center items-center hidden sm:block">
+<div class="flex items-center h-full">
+  <div class="sm:flex grow justify-center items-center hidden">
     <img src="assets/images/policy-recommendations-vaccine-illustration.png"/>
   </div>
   <div class="flex flex-col justify-center grow items-center px-10">
-    <img width="100" src="assets/images/Ministry_of_Health_(Vietnam)_Logo.svg.png">
+    <img width="100" src="assets/images/Ministry_of_Health_(Vietnam)_Logo.svg.png"/>
     <form nz-form [formGroup]="validateForm" class="login-form mt-6">
       <nz-form-item>
-        <nz-form-control nzErrorTip="Vui lòng điền số điện thoại!">
-          <nz-input-group nzPrefixIcon="phone">
-            <input type="text" nz-input formControlName="phone" placeholder="Số điện thoại (+84987654321)" />
+        <nz-form-control nzErrorTip="Vui lòng điền đúng số điện thoại!">
+          <nz-input-group nzPrefixIcon="phone" nzSize="large">
+            <input nzSize="large" type="text" nz-input formControlName="phone" placeholder="Số điện thoại" />
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
       <div class="flex gap-2">
         <nz-form-item class="grow">
           <nz-form-control nzErrorTip="Vui lòng nhập mã OTP!">
-            <nz-input-group nzPrefixIcon="lock">
+            <nz-input-group nzPrefixIcon="lock" nzSize="large">
               <input type="password" nz-input formControlName="otp" placeholder="Mã OTP" />
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
-        <button [nzLoading]="getOTPLoading" nz-button class="login-form-margin grow" [nzType]="'primary'" (click)="getOTP()">Lấy OTP</button>
+        <button nzSize="large" [nzLoading]="getOTPLoading" nz-button class="login-form-margin grow" [nzType]="'primary'" (click)="getOTP()">Lấy OTP</button>
       </div>
-      <button [nzLoading]="loading" nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="submitForm()">Đăng nhập</button>
+      <button nzSize="large" [nzLoading]="loading" nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="submitForm()">Đăng nhập</button>
     </form>
     <img style="z-index: -10" class="md:hidden absolute bottom-0 opacity-50" src="assets/images/policy-recommendations-vaccine-illustration.png">
   </div>

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GuestNavbarComponent } from './guest-navbar.component';
+import { GuestHeaderMobileComponent } from './guest-header-mobile.component';
 
-describe('GuestNavbarComponent', () => {
-  let component: GuestNavbarComponent;
-  let fixture: ComponentFixture<GuestNavbarComponent>;
+describe('GuestHeaderMobileComponent', () => {
+  let component: GuestHeaderMobileComponent;
+  let fixture: ComponentFixture<GuestHeaderMobileComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GuestNavbarComponent ]
+      declarations: [ GuestHeaderMobileComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GuestNavbarComponent);
+    fixture = TestBed.createComponent(GuestHeaderMobileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

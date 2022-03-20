@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { GuestRoutingModule } from './guest-routing.module';
-import { GuestComponent } from './guest.component';
-import { GuestDashboardComponent } from './guest-dashboard/guest-dashboard.component';
-import { GuestNavbarComponent } from './guest-navbar/guest-navbar.component';
+import {GuestRoutingModule} from './guest-routing.module';
+import {GuestComponent} from './guest.component';
+import {GuestDashboardComponent} from './guest-dashboard/guest-dashboard.component';
 import {NzAvatarModule} from "ng-zorro-antd/avatar";
 import {NzDropDownModule} from "ng-zorro-antd/dropdown";
 import {NzIconModule} from "ng-zorro-antd/icon";
@@ -19,23 +18,30 @@ import {NzCardModule} from "ng-zorro-antd/card";
 import {NzTypographyModule} from "ng-zorro-antd/typography";
 import {NzTableModule} from "ng-zorro-antd/table";
 import {NzDividerModule} from "ng-zorro-antd/divider";
-import { GuestVcnProfileCardComponent } from './guest-vcn-profile-card/guest-vcn-profile-card.component';
-import { GuestVcnProfileFormComponent } from './guest-vcn-profile-form/guest-vcn-profile-form.component';
-import { GuestVcnProfileDetailComponent } from './guest-vcn-profile-detail/guest-vcn-profile-detail.component';
-import { GuestPatientProfileFormComponent } from './guest-patient-profile-form/guest-patient-profile-form.component';
-import { GuestPatientProfileDetailComponent } from './guest-patient-profile-detail/guest-patient-profile-detail.component';
+import {GuestVcnProfileCardComponent} from './guest-vcn-profile-card/guest-vcn-profile-card.component';
+import {GuestVcnProfileFormComponent} from './guest-vcn-profile-form/guest-vcn-profile-form.component';
+import {GuestVcnProfileDetailComponent} from './guest-vcn-profile-detail/guest-vcn-profile-detail.component';
+import {GuestPatientProfileFormComponent} from './guest-patient-profile-form/guest-patient-profile-form.component';
+import {
+  GuestPatientProfileDetailComponent
+} from './guest-patient-profile-detail/guest-patient-profile-detail.component';
+import {GuestNavbarMobileComponent} from './guest-navbar-mobile/guest-navbar-mobile.component';
+import {GuestHeaderMobileComponent} from './guest-header-mobile/guest-header-mobile.component';
+import {GuestHeaderComponent} from './guest-header/guest-header.component';
 
 
 @NgModule({
   declarations: [
     GuestComponent,
     GuestDashboardComponent,
-    GuestNavbarComponent,
     GuestVcnProfileCardComponent,
     GuestVcnProfileFormComponent,
     GuestVcnProfileDetailComponent,
     GuestPatientProfileFormComponent,
-    GuestPatientProfileDetailComponent
+    GuestPatientProfileDetailComponent,
+    GuestNavbarMobileComponent,
+    GuestHeaderMobileComponent,
+    GuestHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -56,4 +62,5 @@ import { GuestPatientProfileDetailComponent } from './guest-patient-profile-deta
     NzDividerModule,
   ]
 })
-export class GuestModule { }
+export class GuestModule {
+}

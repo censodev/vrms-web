@@ -1,2 +1,4 @@
-<app-guest-navbar></app-guest-navbar>
+<app-guest-header [appName]="appName" class="hidden md:block"></app-guest-header>
+<app-guest-header-mobile [appName]="appName" class="md:hidden"></app-guest-header-mobile>
 <router-outlet></router-outlet>
+<app-guest-navbar-mobile class="md:hidden"></app-guest-navbar-mobile>

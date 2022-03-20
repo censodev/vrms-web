@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from "../../auth/auth.service";
 import {Router} from "@angular/router";
 import {NzMessageService} from "ng-zorro-antd/message";
 
 @Component({
-  selector: 'app-guest-navbar',
-  templateUrl: './guest-navbar.component.html',
-  styleUrls: ['./guest-navbar.component.scss']
+  selector: 'app-guest-header',
+  templateUrl: './guest-header.component.html',
+  styleUrls: ['./guest-header.component.scss']
 })
-export class GuestNavbarComponent implements OnInit {
+export class GuestHeaderComponent implements OnInit {
+  @Input() appName!: string;
 
   constructor(private auth: AuthService,
               private router: Router,

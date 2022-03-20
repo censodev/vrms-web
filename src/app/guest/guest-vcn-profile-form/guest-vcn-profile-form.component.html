@@ -12,7 +12,7 @@
         <nz-select class="grow" formControlName="patientProfileId">
           <nz-option *ngFor="let profile of patientProfiles$ | async" [nzValue]="profile.id" [nzLabel]="profile.fullName"></nz-option>
         </nz-select>
-        <a routerLink="/guest/profile/create" nz-button nzType="primary" class="ml-2">Tạo hồ sơ</a>
+        <a routerLink="/guest/register/profile" nz-button nzType="primary" class="ml-2">Tạo hồ sơ</a>
       </div>
     </div>
     <app-guest-patient-profile-detail class="px-5" *ngIf="selectedProfile" [profile]="selectedProfile"></app-guest-patient-profile-detail>

@@ -12,9 +12,10 @@ const routes: Routes = [
     component: GuestComponent,
     canActivate: [AuthGuard],
     children: [
-      {path: '', component: GuestDashboardComponent},
+      {path: '', redirectTo: 'dashboard'},
+      {path: 'dashboard', component: GuestDashboardComponent},
       {path: 'register', component: GuestVcnProfileFormComponent},
-      {path: 'profile/create', component: GuestPatientProfileFormComponent},
+      {path: 'register/profile', component: GuestPatientProfileFormComponent},
     ],
   }
 ];

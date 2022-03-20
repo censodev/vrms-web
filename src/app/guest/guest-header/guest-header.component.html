@@ -1,6 +1,9 @@
-<div class="flex items-center justify-between px-3 py-2 border-b">
-  <img routerLink="/guest" width="50" src="assets/images/Ministry_of_Health_(Vietnam)_Logo.svg.png" alt="">
-  <nz-avatar [nzSize]="40" nzIcon="user" nz-dropdown [nzDropdownMenu]="menuProfile"></nz-avatar>
+<div style="height: 76px">
+  <div style="z-index: 10" class="fixed top-0 w-full bg-white flex items-center px-3 py-2 border-b">
+    <img routerLink="/guest" width="50" src="assets/images/Ministry_of_Health_(Vietnam)_Logo.svg.png" alt="">
+    <div class="text-xl pl-3">{{appName}}</div>
+    <nz-avatar class="ml-auto" [nzSize]="40" nzIcon="user" nz-dropdown [nzDropdownMenu]="menuProfile"></nz-avatar>
+  </div>
 </div>
 <nz-dropdown-menu #menuProfile="nzDropdownMenu">
   <ul nz-menu>
@@ -15,3 +18,4 @@
     </li>
   </ul>
 </nz-dropdown-menu>
+

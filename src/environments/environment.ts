@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiEndpoint: 'http://vrms.censo.space:8080/api',
+  appName: 'VRMS',
 };
 
 /*

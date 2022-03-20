@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      phone: [null, [Validators.required]],
+      phone: [null, [Validators.required, Validators.pattern(/^(0)(\d{9})$/)]],
       otp: [null, [Validators.required, Validators.maxLength(6), Validators.minLength(6)]],
     });
   }
@@ -30,7 +30,11 @@ export class LoginComponent implements OnInit {
   submitForm(): void {
     if (this.validateForm.valid) {
       this.loading = true;
-      this.auth.loginForGuest(this.validateForm.value)
+      const body = {
+        ...this.validateForm.value,
+        phone: '+84' + this.validateForm.value.phone.substring(1),
+      }
+      this.auth.loginForGuest(body)
         .subscribe({
           next: res => {
             this.msg.success(res.message);
