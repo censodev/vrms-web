@@ -20,7 +20,7 @@
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
-        <button nzSize="large" [nzLoading]="getOTPLoading" nz-button class="login-form-margin grow" [nzType]="'primary'" (click)="getOTP()">Lấy OTP</button>
+        <a nzSize="large" [nzLoading]="getOTPLoading" nz-button class="login-form-margin grow" [nzType]="'primary'" (click)="getOTP()">Lấy OTP</a>
       </div>
       <button nzSize="large" [nzLoading]="loading" nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="submitForm()">Đăng nhập</button>
     </form>

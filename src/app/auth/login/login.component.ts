@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       this.loading = true;
       const body = {
         ...this.validateForm.value,
-        phone: '+84' + this.validateForm.value.phone.substring(1),
+        phone: this.castPhone(this.validateForm.value.phone),
       }
       this.auth.loginForGuest(body)
         .subscribe({
@@ -57,11 +57,14 @@ export class LoginComponent implements OnInit {
 
   getOTP() {
     this.getOTPLoading = true;
-    this.auth.getOTP(this.validateForm.value.phone)
+    this.auth.getOTP(this.castPhone(this.validateForm.value.phone))
       .subscribe(() => {
         this.getOTPLoading = false;
         this.msg.success('Mã OTP đã được gửi tới điện thoại của bạn.');
       })
   }
 
+  castPhone(phone: string): string {
+    return '+84' + phone.substring(1)
+  }
 }
