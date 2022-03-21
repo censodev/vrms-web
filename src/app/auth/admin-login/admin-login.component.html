@@ -1,27 +1,39 @@
-<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
-  <nz-form-item>
-    <nz-form-control nzErrorTip="Vui lòng điền tên đăng nhập!">
-      <nz-input-group nzPrefixIcon="user">
-        <input type="text" nz-input formControlName="username" placeholder="Tên đăng nhập" />
-      </nz-input-group>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-control nzErrorTip="Vui lòng nhập mật khẩu!">
-      <nz-input-group nzPrefixIcon="lock">
-        <input type="password" nz-input formControlName="password" placeholder="Mật khẩu" />
-      </nz-input-group>
-    </nz-form-control>
-  </nz-form-item>
-  <div nz-row class="login-form-margin">
-    <div nz-col [nzSpan]="12">
-      <label nz-checkbox formControlName="remember">
-        <span>Lưu mật khẩu</span>
-      </label>
-    </div>
-    <div nz-col [nzSpan]="12">
-      <a class="login-form-forgot">Quên mật khẩu</a>
-    </div>
+
+
+<div class="flex items-center h-full">
+  <div class="sm:flex grow justify-center items-center hidden">
+    <img src="assets/images/policy-recommendations-vaccine-illustration.png"/>
   </div>
-  <button nz-button [nzLoading]="loading" class="login-form-button login-form-margin" [nzType]="'primary'">Đăng nhập</button>
-</form>
+  <div class="flex flex-col justify-center grow items-center px-10">
+    <img width="100" src="assets/images/Ministry_of_Health_(Vietnam)_Logo.svg.png"/>
+    <form nz-form [formGroup]="validateForm" class="login-form mt-6" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Vui lòng điền tên đăng nhập!">
+          <nz-input-group nzPrefixIcon="user" nzSize="large">
+            <input type="text" nz-input formControlName="username" placeholder="Tên đăng nhập" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Vui lòng nhập mật khẩu!">
+          <nz-input-group nzPrefixIcon="lock" nzSize="large">
+            <input type="password" nz-input formControlName="password" placeholder="Mật khẩu" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <div nz-row class="login-form-margin">
+        <div nz-col [nzSpan]="12">
+          <label nz-checkbox formControlName="remember">
+            <span>Lưu mật khẩu</span>
+          </label>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <a class="login-form-forgot">Quên mật khẩu</a>
+        </div>
+      </div>
+      <button nz-button nzSize="large" [nzLoading]="loading" class="login-form-button login-form-margin" [nzType]="'primary'">Đăng nhập</button>
+    </form>
+    <img style="z-index: -10" class="md:hidden absolute bottom-0 opacity-50" src="assets/images/policy-recommendations-vaccine-illustration.png">
+  </div>
+</div>
+

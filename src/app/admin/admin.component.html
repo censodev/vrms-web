@@ -8,7 +8,7 @@
     <div class="sidebar-logo">
       <a href="https://ng.ant.design/" target="_blank">
         <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-        <h1>Ant Design Of Angular</h1>
+        <h1>VRMS ADMIN</h1>
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
@@ -20,31 +20,55 @@
           </a>
         </li>
         <li nz-menu-item nzMatchRouter>
-          <a routerLink="/admin/agent">
+          <a routerLink="/admin/account">
             <i nz-icon nzType="user" nzTheme="outline"></i>
             <span>Tài khoản</span>
           </a>
         </li>
         <li nz-menu-item nzMatchRouter>
-          <a routerLink="/admin/vaccination-site">
+          <a routerLink="/admin/vcn/rss/site">
             <i nz-icon nzType="home" nzTheme="outline"></i>
             <span>Cơ sở tiêm chủng</span>
           </a>
         </li>
         <li nz-menu-item nzMatchRouter>
-          <a routerLink="/admin/vaccination-package">
+          <a routerLink="/admin/vcn/rss/package">
             <i nz-icon nzType="inbox" nzTheme="outline"></i>
             <span>Gói tiêm chủng</span>
           </a>
         </li>
-        <li nz-menu-item nzMatchRouter>
-          <a routerLink="/admin/vaccination-package">
-            <i nz-icon nzType="audit" nzTheme="outline"></i>
-            <span>Biểu mẫu khám sàng lọc</span>
-          </a>
-        </li>
       </ng-container>
       <ng-container *ngIf="auth.isAgent()">
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/admin/dashboard">
+            <i nz-icon nzType="dashboard" nzTheme="outline"></i>
+            <span>Tổng quan</span>
+          </a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/admin/vcn/prc/check-in">
+            <i nz-icon nzType="select" nzTheme="outline"></i>
+            <span>Tiếp đón</span>
+          </a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/admin/vcn/prc/test">
+            <i nz-icon nzType="file-protect" nzTheme="outline"></i>
+            <span>Khám sàng lọc</span>
+          </a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/admin/vcn/prc/pay">
+            <i nz-icon nzType="dollar" nzTheme="outline"></i>
+            <span>Thanh toán</span>
+          </a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/admin/vcn/prc/monitor">
+            <i nz-icon nzType="eye" nzTheme="outline"></i>
+            <span>Theo dõi sau tiêm</span>
+          </a>
+        </li>
       </ng-container>
     </ul>
   </nz-sider>

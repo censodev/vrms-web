@@ -18,7 +18,7 @@ export class AuthAdminGuard implements CanActivate {
     return this.authService.isAuthorized()
       .pipe(
         tap(authenticated => {
-          if (!authenticated) {
+          if (!authenticated || (!this.authService.isAdmin() && !this.authService.isAgent())) {
             this.router.navigate(['auth/admin-login']);
           }
         }),
