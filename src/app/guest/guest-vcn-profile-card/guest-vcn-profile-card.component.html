@@ -1,4 +1,4 @@
-<nz-card class="grow" [nzActions]="[actionDetails, actionCancel]">
+<nz-card class="grow" [nzActions]="canBeCanceled(profile.status) ? [actionDetails, actionCancel] : [actionDetails]">
   <h3 nz-typography>{{profile.patientProfile.fullName}}</h3>
   <ng-container [ngSwitch]="profile.status">
     <div *ngSwitchCase="vcnProfileStatusEnum.CREATED" class="profile-card-status">Đã đăng ký</div>
@@ -32,9 +32,9 @@
     </tbody>
   </table>
   <ng-template #actionDetails>
-    <i class="hover:text-blue-500" nz-icon nzType="search" nzTheme="outline"></i>
+    <i class="hover:text-blue-500" nz-icon nzType="search" nzTheme="outline" [routerLink]="['/guest/dashboard', profile.id]"></i>
   </ng-template>
   <ng-template #actionCancel>
-    <i class="hover:text-red-500" nz-icon nzType="close" nzTheme="outline"></i>
+    <i class="hover:text-red-500" nz-icon nzType="close" nzTheme="outline" (click)="openDeleteModal(profile)"></i>
   </ng-template>
 </nz-card>

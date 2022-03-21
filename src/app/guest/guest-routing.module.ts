@@ -5,6 +5,7 @@ import {AuthGuard} from "../auth/auth.guard";
 import {GuestDashboardComponent} from "./guest-dashboard/guest-dashboard.component";
 import {GuestVcnProfileFormComponent} from "./guest-vcn-profile-form/guest-vcn-profile-form.component";
 import {GuestPatientProfileFormComponent} from "./guest-patient-profile-form/guest-patient-profile-form.component";
+import {GuestVcnProfileDetailComponent} from "./guest-vcn-profile-detail/guest-vcn-profile-detail.component";
 
 const routes: Routes = [
   {
@@ -12,10 +13,11 @@ const routes: Routes = [
     component: GuestComponent,
     canActivate: [AuthGuard],
     children: [
-      {path: '', redirectTo: 'dashboard'},
       {path: 'dashboard', component: GuestDashboardComponent},
+      {path: 'dashboard/:id', component: GuestVcnProfileDetailComponent},
       {path: 'register', component: GuestVcnProfileFormComponent},
       {path: 'register/profile', component: GuestPatientProfileFormComponent},
+      {path: '', redirectTo: 'dashboard'},
     ],
   }
 ];
