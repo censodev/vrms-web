@@ -2,7 +2,7 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import {PageRes} from "../../payload/page.res";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Res} from "../../payload/res";
-import {concatMap, map} from "rxjs/operators";
+import {concatMap, map, tap} from "rxjs/operators";
 import {BehaviorSubject, combineLatest, debounceTime, startWith} from "rxjs";
 import {FormControl} from "@angular/forms";
 
@@ -37,7 +37,10 @@ export class SemiDatatableComponent implements OnInit, OnChanges {
     if (changes['api'].currentValue !== null && changes['api'].currentValue !== '') {
       combineLatest([
         this.page$,
-        this.searchFrmCtl.valueChanges.pipe(startWith(''), debounceTime(1000)),
+        this.searchFrmCtl.valueChanges.pipe(
+          startWith(''),
+          debounceTime(500),
+          tap(() => this.loading = true)),
       ])
         .pipe(
           concatMap(params => {
