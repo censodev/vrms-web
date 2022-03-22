@@ -1,1 +1,7 @@
-<p>account works!</p>
+<app-semi-datatable
+  [api]="accountApiUrl"
+  [columns]="['id', 'username', 'phone', 'email', 'role', 'status']"
+  [titles]="['ID', 'Tài khoản', 'Số điện thoại', 'Email', 'Vai trò', 'Trạng thái']"
+  [masks]="tableMasks"
+  [actions]="tableActions"
+></app-semi-datatable>

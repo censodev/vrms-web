@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
 import { AccountFormComponent } from './account-form/account-form.component';
+import {SemiDatatableModule} from "../../core/components/semi-datatable/semi-datatable.module";
 
 
 @NgModule({
@@ -11,9 +12,10 @@ import { AccountFormComponent } from './account-form/account-form.component';
     AccountComponent,
     AccountFormComponent
   ],
-  imports: [
-    CommonModule,
-    AccountRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        AccountRoutingModule,
+        SemiDatatableModule
+    ]
 })
 export class AccountModule { }
