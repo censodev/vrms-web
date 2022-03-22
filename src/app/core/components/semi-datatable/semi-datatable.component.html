@@ -25,3 +25,10 @@
   </tr>
   </tbody>
 </nz-table>
+<nz-pagination nzSimple
+               (nzPageIndexChange)="page$.next($event -1)"
+               (nzPageSizeChange)="size$.next($event)"
+               [nzPageIndex]="page$.getValue() + 1"
+               [nzTotal]="data.totalElements"
+               [nzPageSize]="size$.getValue()"
+               class="flex justify-center"></nz-pagination>

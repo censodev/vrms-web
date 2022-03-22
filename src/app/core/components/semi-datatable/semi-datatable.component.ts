@@ -24,9 +24,15 @@ export class SemiDatatableComponent implements OnInit, OnChanges {
   @Input() columns!: string[];
   @Input() masks?: Record<string, (colValue: any) => string>;
   @Input() actions?: SemiDatatableAction[];
+  @Input() page = 0;
+  @Input() size = 10;
 
-  data: PageRes<any> = {content: []};
-  page$ = new BehaviorSubject(0);
+  data: PageRes<any> = {
+    content: [],
+    totalElements: 0,
+  };
+  page$ = new BehaviorSubject(this.page);
+  size$ = new BehaviorSubject(this.size);
   searchFrmCtl = new FormControl();
   loading = true;
 
@@ -37,6 +43,7 @@ export class SemiDatatableComponent implements OnInit, OnChanges {
     if (changes['api'].currentValue !== null && changes['api'].currentValue !== '') {
       combineLatest([
         this.page$,
+        this.size$,
         this.searchFrmCtl.valueChanges.pipe(
           startWith(''),
           debounceTime(500),
@@ -46,7 +53,8 @@ export class SemiDatatableComponent implements OnInit, OnChanges {
           concatMap(params => {
             const httpParams = new HttpParams()
               .append('page', params[0])
-              .append('keyword', params[1]);
+              .append('size', params[1])
+              .append('keyword', params[2])
             return this.http.get<Res<PageRes<any>>>(changes['api'].currentValue, {params: httpParams})
           }),
           map(res => res.data))

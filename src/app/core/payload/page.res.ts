@@ -1,3 +1,4 @@
 export interface PageRes<T> {
-  content: T[]
+  content: T[];
+  totalElements: number;
 }

@@ -6,6 +6,7 @@ import {NzIconModule} from "ng-zorro-antd/icon";
 import {NzButtonModule} from "ng-zorro-antd/button";
 import {NzInputModule} from "ng-zorro-antd/input";
 import {ReactiveFormsModule} from "@angular/forms";
+import {NzPaginationModule} from "ng-zorro-antd/pagination";
 
 
 
@@ -16,13 +17,14 @@ import {ReactiveFormsModule} from "@angular/forms";
   exports: [
     SemiDatatableComponent
   ],
-  imports: [
-    CommonModule,
-    NzTableModule,
-    NzIconModule,
-    NzButtonModule,
-    NzInputModule,
-    ReactiveFormsModule,
-  ]
+    imports: [
+        CommonModule,
+        NzTableModule,
+        NzIconModule,
+        NzButtonModule,
+        NzInputModule,
+        ReactiveFormsModule,
+        NzPaginationModule,
+    ]
 })
 export class SemiDatatableModule { }
