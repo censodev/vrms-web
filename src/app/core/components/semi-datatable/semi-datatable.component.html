@@ -14,7 +14,7 @@
   <tr *ngFor="let row of table.data">
     <td *ngFor="let col of columns">
       <span *ngIf="masks && masks[col]" [innerHTML]="masks[col](row[col])"></span>
-      <span *ngIf="!masks || !masks[col]">{{row[col]}}</span>
+      <span *ngIf="!masks || !masks[col]">{{row[col] ?? emptyCell}}</span>
     </td>
     <td class="flex gap-3">
       <a *ngFor="let act of actions" [class]="act?.classes" (click)="handleActionClick(act, row)">

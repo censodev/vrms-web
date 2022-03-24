@@ -15,23 +15,22 @@ export class AccountComponent implements OnInit {
     'status': (val: StatusEnum) => {
       switch (val) {
         case StatusEnum.ACTIVE:
-          return `<div class="text-green-500">Hoạt động</div>`
+          return `<span class="text-green-500">Hoạt động</span>`
         case StatusEnum.IN_ACTIVE:
         default:
-          return `<div class="text-red-500">Không hoạt động</div>`
+          return `<span class="text-red-500">Không hoạt động</span>`
       }
     },
     'role': (val: RoleEnum) => {
       switch (val) {
-        case RoleEnum.ROLE_ADMIN: return 'Quản trị viên'
-        case RoleEnum.ROLE_AGENT: return 'Nhân viên'
-        case RoleEnum.ROLE_GUEST: return 'Khách'
+        case RoleEnum.ROLE_ADMIN: return '<span class="text-red-500">Quản trị viên</span>'
+        case RoleEnum.ROLE_AGENT: return '<span class="text-blue-500">Nhân viên</span>'
+        case RoleEnum.ROLE_GUEST: return '<span>Khách</span>'
       }
     },
   };
   tableActions: SemiDatatableAction[] = [
     {icon: 'edit', classes: ['text-blue-500'], handler: rowValue => console.log(rowValue)},
-    {icon: 'delete', classes: ['text-red-500']},
   ];
 
   constructor() { }

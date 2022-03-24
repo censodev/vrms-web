@@ -26,6 +26,7 @@ export class SemiDatatableComponent implements OnInit, OnChanges {
   @Input() actions?: SemiDatatableAction[];
   @Input() page = 0;
   @Input() size = 10;
+  @Input() emptyCell = '-';
 
   data: PageRes<any> = {
     content: [],
