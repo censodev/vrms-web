@@ -3,6 +3,7 @@ import {environment} from "../../../environments/environment";
 import {StatusEnum} from "../../core/enums/status.enum";
 import {RoleEnum} from "../../auth/role.enum";
 import {SemiDatatableAction} from "../../core/components/semi-datatable/semi-datatable.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-account',
@@ -30,10 +31,14 @@ export class AccountComponent implements OnInit {
     },
   };
   tableActions: SemiDatatableAction[] = [
-    {icon: 'edit', classes: ['text-blue-500'], handler: rowValue => console.log(rowValue)},
+    {
+      icon: 'edit',
+      classes: ['text-blue-500'],
+      handler: rowValue => this.router.navigate(['/admin/account', rowValue.id]),
+    },
   ];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }

@@ -1,1 +1,45 @@
-<p>account-form works!</p>
+<form nz-form [formGroup]="masterForm" (ngSubmit)="submit()">
+  <nz-form-item *ngIf="masterForm.value.role !== roleEnum.ROLE_GUEST">
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="username">Tên tài khoản</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <input nz-input formControlName="username" id="username" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item *ngIf="masterForm.value.role !== roleEnum.ROLE_GUEST">
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <input nz-input formControlName="email" id="email" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item *ngIf="masterForm.value.role === roleEnum.ROLE_GUEST">
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="phone">Số điện thoại</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <input nz-input formControlName="phone" id="phone" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="role">Vai trò</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <nz-select id="role" formControlName="role">
+        <nz-option *ngIf="masterForm.value.role !== roleEnum.ROLE_GUEST" [nzValue]="roleEnum.ROLE_ADMIN" nzLabel="Quản trị viên"></nz-option>
+        <nz-option *ngIf="masterForm.value.role !== roleEnum.ROLE_GUEST" [nzValue]="roleEnum.ROLE_AGENT" nzLabel="Nhân viên"></nz-option>
+        <nz-option *ngIf="masterForm.value.role === roleEnum.ROLE_GUEST" [nzValue]="roleEnum.ROLE_GUEST" nzLabel="Khách"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="status">Trạng thái</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <nz-select id="status" formControlName="status">
+        <nz-option [nzValue]="statusEnum.ACTIVE" nzLabel="Hoạt động"></nz-option>
+        <nz-option [nzValue]="statusEnum.IN_ACTIVE" nzLabel="Vô hiệu hóa"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nz-row>
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary">Lưu</button>
+      <a routerLink="/admin/account" nz-button class="ml-2">Hủy</a>
+    </nz-form-control>
+  </nz-form-item>
+</form>
