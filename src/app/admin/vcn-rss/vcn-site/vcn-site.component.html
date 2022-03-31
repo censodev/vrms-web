@@ -1,1 +1,8 @@
-<p>vcn-site works!</p>
+<button nz-button nzType="primary" class="mb-3" routerLink="/admin/vcn/rss/site/create">Tạo mới</button>
+<app-semi-datatable
+  [api]="siteApiUrl"
+  [columns]="['id', 'name', 'status', 'province', 'district', 'ward', 'address']"
+  [titles]="['ID', 'Tên cơ sở', 'Trạng thái', 'Tỉnh/Thành phố', 'Quận/Huyện', 'Phường/Xã', 'Địa chỉ']"
+  [masks]="tableMasks"
+  [actions]="tableActions"
+></app-semi-datatable>
