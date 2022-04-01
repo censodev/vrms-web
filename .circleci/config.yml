@@ -13,7 +13,7 @@ jobs:
     steps:
       - run: ssh $SSH_USER@$SSH_HOST "docker rm -f vrms-web"
       - run: ssh $SSH_USER@$SSH_HOST "docker pull $DOCKERHUB_USERNAME/vrms-web:$CIRCLE_BRANCH"
-      - run: ssh $SSH_USER@$SSH_HOST "docker run --name vrms-web -d -p 80:80 $DOCKERHUB_USERNAME/vrms-web:$CIRCLE_BRANCH"
+      - run: ssh $SSH_USER@$SSH_HOST "docker run --name vrms-web -d -p 80:80 -v /etc/ssl/vrms:/etc/ssl:ro $DOCKERHUB_USERNAME/vrms-web:$CIRCLE_BRANCH"
 
 workflows:
   version: 2
