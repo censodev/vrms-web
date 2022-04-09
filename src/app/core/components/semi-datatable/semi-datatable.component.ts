@@ -22,7 +22,7 @@ export class SemiDatatableComponent implements OnInit, OnChanges {
   @Input() api!: string;
   @Input() titles!: string[];
   @Input() columns!: string[];
-  @Input() masks?: Record<string, (colValue: any) => string>;
+  @Input() masks?: Record<string, (colValue: any) => any>;
   @Input() actions?: SemiDatatableAction[];
   @Input() page = 0;
   @Input() size = 10;

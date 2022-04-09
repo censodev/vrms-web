@@ -11,13 +11,15 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {NzFormModule} from "ng-zorro-antd/form";
 import {NzInputModule} from "ng-zorro-antd/input";
 import {NzSelectModule} from "ng-zorro-antd/select";
+import { VcnPackageFormComponent } from './vcn-package/vcn-package-form/vcn-package-form.component';
 
 
 @NgModule({
   declarations: [
     VcnSiteComponent,
     VcnPackageComponent,
-    VcnSiteFormComponent
+    VcnSiteFormComponent,
+    VcnPackageFormComponent
   ],
   imports: [
     CommonModule,
