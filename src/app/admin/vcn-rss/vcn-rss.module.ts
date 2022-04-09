@@ -7,6 +7,10 @@ import { VcnPackageComponent } from './vcn-package/vcn-package.component';
 import {SemiDatatableModule} from "../../core/components/semi-datatable/semi-datatable.module";
 import {NzButtonModule} from "ng-zorro-antd/button";
 import { VcnSiteFormComponent } from './vcn-site/vcn-site-form/vcn-site-form.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {NzFormModule} from "ng-zorro-antd/form";
+import {NzInputModule} from "ng-zorro-antd/input";
+import {NzSelectModule} from "ng-zorro-antd/select";
 
 
 @NgModule({
@@ -19,7 +23,11 @@ import { VcnSiteFormComponent } from './vcn-site/vcn-site-form/vcn-site-form.com
     CommonModule,
     VcnRssRoutingModule,
     SemiDatatableModule,
-    NzButtonModule
+    NzButtonModule,
+    ReactiveFormsModule,
+    NzFormModule,
+    NzInputModule,
+    NzSelectModule
   ]
 })
 export class VcnRssModule { }

@@ -1,1 +1,54 @@
-<p>vcn-site-form works!</p>
+<form nz-form [formGroup]="masterForm" (ngSubmit)="submit()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">Tên cơ sở</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <input nz-input formControlName="name" id="name"/>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="provinceId">Tỉnh/Thành phố</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <nz-select id="provinceId" formControlName="provinceId">
+        <nz-option *ngFor="let item of provinces$ | async" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="districtId">Quận/Huyện</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <nz-select id="districtId" formControlName="districtId">
+        <nz-option *ngFor="let item of districts$ | async" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="wardId">Phường/Xã</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <nz-select id="wardId" formControlName="wardId">
+        <nz-option *ngFor="let item of wards$ | async" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="address">Địa chỉ chi tiết</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <input nz-input formControlName="address" id="address"/>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item *ngIf="method === 'edit'">
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="status">Trạng thái</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <nz-select id="status" formControlName="status">
+        <nz-option [nzValue]="statusEnum.ACTIVE" nzLabel="Hoạt động"></nz-option>
+        <nz-option [nzValue]="statusEnum.IN_ACTIVE" nzLabel="Không hoạt động"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nz-row>
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary" [disabled]="masterForm.invalid">Lưu</button>
+      <a routerLink="/admin/vcn/rss/site" nz-button class="ml-2">Hủy</a>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+

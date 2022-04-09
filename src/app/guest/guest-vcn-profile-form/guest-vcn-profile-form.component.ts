@@ -6,7 +6,7 @@ import {MstResourceService} from "../../core/services/mst-resource.service";
 import {PatientProfileRes} from "../../core/payload/profile.payload";
 import {ProfileService} from "../../core/services/profile.service";
 import {map} from "rxjs/operators";
-import {VncRssService} from "../../core/services/vnc-rss.service";
+import {VcnRssService} from "../../core/services/vcn-rss.service";
 import {VcnPackageRes, VcnSiteRes} from "../../core/payload/vcn-rss.payload";
 import {NzMessageService} from "ng-zorro-antd/message";
 import {Router} from "@angular/router";
@@ -32,7 +32,7 @@ export class GuestVcnProfileFormComponent implements OnInit {
               private fb: FormBuilder,
               private mstRssService: MstResourceService,
               private profileService: ProfileService,
-              private vcnRssService: VncRssService,
+              private vcnRssService: VcnRssService,
               private msg: NzMessageService,
               private router: Router) {
   }

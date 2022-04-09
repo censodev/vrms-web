@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {environment} from "../../../../environments/environment";
 import {StatusEnum} from "../../../core/enums/status.enum";
-import {RoleEnum} from "../../../auth/role.enum";
 import {SemiDatatableAction} from "../../../core/components/semi-datatable/semi-datatable.component";
 import {Router} from "@angular/router";
 
@@ -34,7 +33,8 @@ export class VcnSiteComponent implements OnInit {
     },
   ];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
   }
