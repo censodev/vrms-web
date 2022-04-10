@@ -1,8 +1,8 @@
 <button nz-button nzType="primary" class="mb-3" routerLink="/admin/vcn/rss/package/create">Tạo mới</button>
 <app-semi-datatable
   [api]="apiUrl"
-  [columns]="['id', 'name', 'price', 'diseasesCode', 'status']"
-  [titles]="['ID', 'Tên gói', 'Đơn giá', 'Mã bệnh phẩm', 'Trạng thái']"
+  [columns]="['id', 'name', 'diseasesCode', 'price', 'status']"
+  [titles]="['ID', 'Tên gói', 'Mã dịch tễ', 'Đơn giá', 'Trạng thái']"
   [masks]="tableMasks"
   [actions]="tableActions"
 ></app-semi-datatable>

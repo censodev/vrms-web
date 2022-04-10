@@ -1,1 +1,51 @@
-<p>vcn-package-form works!</p>
+<form nz-form [formGroup]="masterForm" (ngSubmit)="submit()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">Tên gói</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <input nz-input formControlName="name" id="name"/>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="diseasesCode">Mã dịch tễ</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <input nz-input formControlName="diseasesCode" id="diseasesCode"/>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="price">Đơn giá</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <input nz-input formControlName="price" id="price"/>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="screeningTemplateId">Biểu mẫu khám sàng lọc</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <nz-select id="screeningTemplateId" formControlName="screeningTemplateId">
+        <nz-option *ngFor="let item of screeningTmpl$ | async" [nzValue]="item.id" [nzLabel]="item.title"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item *ngIf="method === 'edit'">
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="status">Trạng thái</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <nz-select id="status" formControlName="status">
+        <nz-option [nzValue]="statusEnum.ACTIVE" nzLabel="Khả dụng"></nz-option>
+        <nz-option [nzValue]="statusEnum.IN_ACTIVE" nzLabel="Không khả dụng"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="desc">Mô tả</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <textarea nz-input formControlName="desc" id="desc" rows="10"></textarea>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nz-row>
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary" [disabled]="masterForm.invalid">Lưu</button>
+      <a routerLink="/admin/vcn/rss/package" nz-button class="ml-2">Hủy</a>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+

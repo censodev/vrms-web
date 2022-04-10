@@ -5,7 +5,6 @@ import {filter, Observable, of} from "rxjs";
 import {RoleEnum} from "../../../../auth/role.enum";
 import {StatusEnum} from "../../../../core/enums/status.enum";
 import {ActivatedRoute, Router} from "@angular/router";
-import {AccountService} from "../../../../core/services/account.service";
 import {NzMessageService} from "ng-zorro-antd/message";
 import {VcnRssService} from "../../../../core/services/vcn-rss.service";
 import {MstResourceService} from "../../../../core/services/mst-resource.service";
@@ -36,12 +35,12 @@ export class VcnSiteFormComponent implements OnInit {
   ngOnInit(): void {
     this.masterForm = this.fb.group({
       id: [],
-      name: [],
-      address: [],
-      provinceId: [],
-      districtId: [],
-      wardId: [],
-      status: [],
+      name: [null, [Validators.required]],
+      address: [null, [Validators.required]],
+      provinceId: [null, [Validators.required]],
+      districtId: [null, [Validators.required]],
+      wardId: [null, [Validators.required]],
+      status: [null, [Validators.required]],
     })
     this.route.data
       .pipe(
@@ -75,8 +74,8 @@ export class VcnSiteFormComponent implements OnInit {
 
   submit() {
     const obs$ = this.method === 'create'
-      ? this.vcnRssService.create(this.masterForm.value)
-      : this.vcnRssService.update(this.masterForm.value)
+      ? this.vcnRssService.createSite(this.masterForm.value)
+      : this.vcnRssService.updateSite(this.masterForm.value)
     obs$.subscribe({
       next: res => {
         this.router.navigate(['/admin/vcn/rss/site'])

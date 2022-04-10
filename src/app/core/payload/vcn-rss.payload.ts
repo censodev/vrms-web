@@ -6,7 +6,25 @@ export interface VcnPackageRes {
   name: string;
   desc: string;
   price: number;
-  status: string;
+  status: StatusEnum;
+  diseasesCode: string;
+  screeningTemplateId: number;
+}
+
+export interface VcnPackageCreateReq {
+  name: string;
+  desc: string;
+  price: number;
+  diseasesCode: string;
+  screeningTemplateId: number;
+}
+
+export interface VcnPackageUpdateReq {
+  id: number;
+  name: string;
+  desc: string;
+  price: number;
+  status: StatusEnum;
   diseasesCode: string;
   screeningTemplateId: number;
 }
@@ -39,5 +57,12 @@ export interface VcnSiteUpdateReq {
   provinceId: number;
   districtId: number;
   wardId: number;
+  status: StatusEnum;
+}
+
+export interface VcnScreeningTmplRes {
+  id: number;
+  title: string;
+  data: any;
   status: StatusEnum;
 }
