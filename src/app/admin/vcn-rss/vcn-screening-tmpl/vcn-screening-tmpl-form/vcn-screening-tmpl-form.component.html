@@ -19,7 +19,8 @@
     <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
       <nz-table #basicTable [nzData]="tmplData$.getValue()"
                 [nzShowPagination]="false"
-                [nzNoResult]="'Vui lòng thêm tùy chọn'">
+                [nzNoResult]="'Vui lòng thêm tùy chọn'"
+                [nzLoading]="loading">
         <thead>
         <tr>
           <th>Phân loại</th>
@@ -40,7 +41,7 @@
           </td>
           <td>
             <div class="flex items-center">
-              <a (click)="removeRecord(data.title)">
+              <a (click)="removeTmplDataRecord(data.title)">
                 <i class="text-red-500" nz-icon nzType="close" nzTheme="outline"></i>
               </a>
               <i class="ml-auto" nz-icon nzType="more" nzTheme="outline"></i>
@@ -49,8 +50,8 @@
         </tr>
         </tbody>
       </nz-table>
-      <a nz-button nzType="primary" class="mt-3" (click)="addDataRecord()">Thêm tùy chọn</a>
-      <a nz-button nzType="default" class="mt-3 ml-2" (click)="restoreDataRecord()">Khôi phục</a>
+      <a nz-button nzType="primary" class="mt-3" (click)="addTmplDataRecord()">Thêm tùy chọn</a>
+      <a nz-button nzType="default" class="mt-3 ml-2" (click)="restoreTmplDataRecord()">Khôi phục</a>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item nz-row>

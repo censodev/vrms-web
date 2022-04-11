@@ -22,6 +22,7 @@ export class VcnScreeningTmplFormComponent implements OnInit {
   vcnScreeningTmplTypeEnum = VcnScreeningTmplDataTypeEnum;
   backupTmplData!: VcnScreeningTmplDataRecord[];
   tmplData$ = new BehaviorSubject<VcnScreeningTmplDataRecord[]>([]);
+  loading = false;
 
   constructor(private route: ActivatedRoute,
               private fb: FormBuilder,
@@ -42,6 +43,7 @@ export class VcnScreeningTmplFormComponent implements OnInit {
         map(data => data['method']),
         tap(method => this.method = method),
         filter(method => method === 'edit'),
+        tap(() => this.loading = true),
         concatMap(() => this.route.params),
         map(params => params['id']),
         concatMap(id => this.vcnRssService.getScreeningTmpl(id)),
@@ -51,6 +53,7 @@ export class VcnScreeningTmplFormComponent implements OnInit {
         this.masterForm.setValue(data)
         this.backupTmplData = data.data
         this.tmplData$.next(data.data)
+        this.loading = false
       })
     this.tmplData$.subscribe(data => {
       this.masterForm.get('data')?.setValue(data)
@@ -70,7 +73,7 @@ export class VcnScreeningTmplFormComponent implements OnInit {
     })
   }
 
-  addDataRecord() {
+  addTmplDataRecord() {
     this.tmplData$.next([
       ...this.tmplData$.getValue(),
       {
@@ -80,11 +83,11 @@ export class VcnScreeningTmplFormComponent implements OnInit {
     ])
   }
 
-  removeRecord(title: string) {
+  removeTmplDataRecord(title: string) {
     this.tmplData$.next(this.tmplData$.getValue().filter(rc => rc.title !== title))
   }
 
-  restoreDataRecord() {
+  restoreTmplDataRecord() {
     this.tmplData$.next(this.backupTmplData)
   }
 
