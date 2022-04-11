@@ -1,3 +1,11 @@
 ::ng-deep .anticon {
   vertical-align: 0.125rem !important;
 }
+
+::ng-deep .cdk-drag-preview {
+  display: table;
+}
+
+::ng-deep .cdk-drag-placeholder {
+  opacity: 0;
+}

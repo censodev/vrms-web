@@ -1,0 +1,65 @@
+<form nz-form [formGroup]="masterForm" (ngSubmit)="submit()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="title">Tiêu đề</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <input nz-input formControlName="title" id="title"/>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item *ngIf="method === 'edit'">
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="status">Trạng thái</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <nz-select id="status" formControlName="status">
+        <nz-option [nzValue]="statusEnum.ACTIVE" nzLabel="Khả dụng"></nz-option>
+        <nz-option [nzValue]="statusEnum.IN_ACTIVE" nzLabel="Không khả dụng"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="">Biểu mẫu</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
+      <nz-table #basicTable [nzData]="tmplData$.getValue()"
+                [nzShowPagination]="false"
+                [nzNoResult]="'Vui lòng thêm tùy chọn'">
+        <thead>
+        <tr>
+          <th>Phân loại</th>
+          <th>Tiêu đề</th>
+          <th>Thao tác</th>
+        </tr>
+        </thead>
+        <tbody cdkDropList (cdkDropListDropped)="dropTmplDataRecord($event)">
+        <tr cdkDrag *ngFor="let data of basicTable.data">
+          <td>
+            <nz-select [ngModelOptions]="{standalone: true}" [(ngModel)]="data.type">
+              <nz-option [nzValue]="vcnScreeningTmplTypeEnum.YES_NO" nzLabel="Có/Không"></nz-option>
+              <nz-option [nzValue]="vcnScreeningTmplTypeEnum.NUMERAL" nzLabel="Số liệu"></nz-option>
+            </nz-select>
+          </td>
+          <td>
+            <input nz-input [ngModelOptions]="{standalone: true}" [(ngModel)]="data.title">
+          </td>
+          <td>
+            <div class="flex items-center">
+              <a (click)="removeRecord(data.title)">
+                <i class="text-red-500" nz-icon nzType="close" nzTheme="outline"></i>
+              </a>
+              <i class="ml-auto" nz-icon nzType="more" nzTheme="outline"></i>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </nz-table>
+      <a nz-button nzType="primary" class="mt-3" (click)="addDataRecord()">Thêm tùy chọn</a>
+      <a nz-button nzType="default" class="mt-3 ml-2" (click)="restoreDataRecord()">Khôi phục</a>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nz-row>
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary" [disabled]="masterForm.invalid">Lưu</button>
+      <a routerLink="/admin/vcn/rss/screening-tmpl" nz-button class="ml-2">Hủy</a>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+
+

@@ -1,0 +1,10 @@
+<button nz-button nzType="primary" class="mb-3" routerLink="/admin/vcn/rss/screening-tmpl/create">Tạo mới</button>
+<app-semi-datatable
+  [api]="apiUrl"
+  [columns]="['id', 'title', 'status']"
+  [titles]="['ID', 'Tiêu đề', 'Trạng thái']"
+  [masks]="tableMasks"
+  [actions]="tableActions"
+></app-semi-datatable>
+
+

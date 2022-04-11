@@ -37,6 +37,12 @@
             <span>Gói tiêm chủng</span>
           </a>
         </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/admin/vcn/rss/screening-tmpl">
+            <i nz-icon nzType="file-done" nzTheme="outline"></i>
+            <span>Biểu mẫu khám sàng lọc</span>
+          </a>
+        </li>
       </ng-container>
       <ng-container *ngIf="auth.isAgent()">
         <li nz-menu-item nzMatchRouter>

@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {PageRes} from "../payload/page.res";
 import {
   VcnPackageCreateReq,
-  VcnPackageRes, VcnPackageUpdateReq, VcnScreeningTmplRes,
+  VcnPackageRes, VcnPackageUpdateReq, VcnScreeningTmplCreateReq, VcnScreeningTmplRes, VcnScreeningTmplUpdateReq,
   VcnSiteCreateReq,
   VcnSiteRes,
   VcnSiteUpdateReq
@@ -53,5 +53,17 @@ export class VcnRssService {
 
   searchScreeningTmpl(kw: string): Observable<Res<PageRes<VcnScreeningTmplRes>>> {
     return this.http.get<Res<PageRes<VcnScreeningTmplRes>>>(`${environment.apiEndpoint}/vcn/resource/screening-tmpl?keyword=${kw}`);
+  }
+
+  getScreeningTmpl(id: number):Observable<Res<VcnScreeningTmplRes>>  {
+    return this.http.get<Res<VcnScreeningTmplRes>>(`${environment.apiEndpoint}/vcn/resource/screening-tmpl/${id}`);
+  }
+
+  createScreeningTmpl(body: VcnScreeningTmplCreateReq): Observable<Res<any>> {
+    return this.http.post<Res<any>>(`${environment.apiEndpoint}/vcn/resource/screening-tmpl`, body)
+  }
+
+  updateScreeningTmpl(body: VcnScreeningTmplUpdateReq): Observable<Res<any>> {
+    return this.http.put<Res<any>>(`${environment.apiEndpoint}/vcn/resource/screening-tmpl`, body)
   }
 }

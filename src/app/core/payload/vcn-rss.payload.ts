@@ -1,5 +1,6 @@
 import {StatusEnum} from "../enums/status.enum";
 import {MstDistrict, MstProvince, MstWard} from "./mst.payload";
+import {VcnScreeningTmplDataTypeEnum} from "../enums/vcn-screening-tmpl-data-type.enum";
 
 export interface VcnPackageRes {
   id: number;
@@ -63,6 +64,23 @@ export interface VcnSiteUpdateReq {
 export interface VcnScreeningTmplRes {
   id: number;
   title: string;
-  data: any;
+  data: VcnScreeningTmplDataRecord[];
   status: StatusEnum;
+}
+
+export interface VcnScreeningTmplCreateReq {
+  title: string;
+  data: VcnScreeningTmplDataRecord[];
+}
+
+export interface VcnScreeningTmplUpdateReq {
+  id: number;
+  title: string;
+  data: VcnScreeningTmplDataRecord[];
+  status: StatusEnum;
+}
+
+export interface VcnScreeningTmplDataRecord {
+  type: VcnScreeningTmplDataTypeEnum;
+  title: string;
 }
