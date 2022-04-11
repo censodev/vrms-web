@@ -40,7 +40,7 @@ export class VcnSiteFormComponent implements OnInit {
       provinceId: [null, [Validators.required]],
       districtId: [null, [Validators.required]],
       wardId: [null, [Validators.required]],
-      status: [null, [Validators.required]],
+      status: [StatusEnum.ACTIVE, [Validators.required]],
     })
     this.route.data
       .pipe(
@@ -81,7 +81,7 @@ export class VcnSiteFormComponent implements OnInit {
         this.router.navigate(['/admin/vcn/rss/site'])
           .then(() => this.msg.success(res.message))
       },
-      error: err => this.msg.error(err.error.message),
+      error: err => this.msg.error(err.error?.message || 'Thao tác thất bại, vui lòng kiểm tra lại biểu mẫu'),
     })
   }
 }

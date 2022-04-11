@@ -32,7 +32,7 @@ export class VcnPackageFormComponent implements OnInit {
       name: [null, [Validators.required]],
       desc: [null, [Validators.required]],
       price: [null, [Validators.required]],
-      status: [null, [Validators.required]],
+      status: [StatusEnum.ACTIVE, [Validators.required]],
       diseasesCode: [null, [Validators.required]],
       screeningTemplateId: [null, [Validators.required]],
     })
@@ -62,7 +62,7 @@ export class VcnPackageFormComponent implements OnInit {
         this.router.navigate(['/admin/vcn/rss/package'])
           .then(() => this.msg.success(res.message))
       },
-      error: err => this.msg.error(err.error.message),
+      error: err => this.msg.error(err.error?.message || 'Thao tác thất bại, vui lòng kiểm tra lại biểu mẫu'),
     })
   }
 }

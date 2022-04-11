@@ -35,7 +35,7 @@ export class VcnScreeningTmplFormComponent implements OnInit {
     this.masterForm = this.fb.group({
       id: [],
       title: [null, [Validators.required]],
-      status: [null, [Validators.required]],
+      status: [StatusEnum.ACTIVE, [Validators.required]],
       data: [null, [Validators.required]],
     })
     this.route.data
@@ -69,7 +69,7 @@ export class VcnScreeningTmplFormComponent implements OnInit {
         this.router.navigate(['/admin/vcn/rss/screening-tmpl'])
           .then(() => this.msg.success(res.message))
       },
-      error: err => this.msg.error(err.error.message),
+      error: err => this.msg.error(err.error?.message || 'Thao tác thất bại, vui lòng kiểm tra lại biểu mẫu'),
     })
   }
 
