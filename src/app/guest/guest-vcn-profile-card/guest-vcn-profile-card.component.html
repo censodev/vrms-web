@@ -27,7 +27,13 @@
     </tr>
     <tr>
       <td class="pr-2">Điểm tiêm:</td>
-      <td class="font-bold">{{profile.selectedSite.name}}</td>
+      <td>
+        <span class="font-bold">{{profile.selectedSite.name}}</span>
+        -
+        {{profile.selectedSite.province.name}},
+        {{profile.selectedSite.district.name}},
+        {{profile.selectedSite.ward.name}}
+      </td>
     </tr>
     </tbody>
   </table>
