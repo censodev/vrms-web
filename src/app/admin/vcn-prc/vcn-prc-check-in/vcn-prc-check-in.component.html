@@ -1,1 +1,8 @@
-<p>vcn-prc-check-in works!</p>
+<app-semi-datatable
+  #dataTable
+  [api]="apiUrl"
+  [columns]="['patientProfile.idCard', 'patientProfile.fullName', 'patientProfile.birthday', 'patientProfile.gender', 'selectedPackage.name']"
+  [titles]="['CMND/CCCD', 'Họ tên', 'Ngày sinh', 'Giới tính', 'Gói tiêm chủng']"
+  [masks]="tableMasks"
+  [actions]="tableActions"
+></app-semi-datatable>
