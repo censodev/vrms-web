@@ -32,7 +32,7 @@ export class VcnPrcPaymentComponent implements OnInit {
   tableActions: SemiDatatableAction[] = [
     {
       icon: 'select',
-      classes: ['text-blue-500'],
+      classes: ['text-blue-500', 'text-2xl'],
       handler: (rowValue: VcnProfileRes) => this.router.navigate(['/admin/vcn/prc/pay', rowValue.id]),
     },
   ];

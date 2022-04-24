@@ -32,7 +32,7 @@ export class VcnPrcTestComponent implements OnInit {
   tableActions: SemiDatatableAction[] = [
     {
       icon: 'select',
-      classes: ['text-blue-500'],
+      classes: ['text-blue-500', 'text-2xl'],
       handler: (rowValue: VcnProfileRes) => this.router.navigate(['/admin/vcn/prc/test', rowValue.id]),
     },
   ];

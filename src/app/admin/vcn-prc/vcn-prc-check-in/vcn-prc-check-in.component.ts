@@ -38,8 +38,8 @@ export class VcnPrcCheckInComponent implements OnInit {
   };
   tableActions: SemiDatatableAction[] = [
     {
-      icon: 'select',
-      classes: ['text-blue-500'],
+      icon: 'check-circle',
+      classes: ['text-green-500', 'text-2xl'],
       handler: (rowValue: VcnProfileRes) => {
         this.modal.success({
           nzTitle: `Tiếp đón bệnh nhân <b>${rowValue.patientProfile.fullName}</b>?`,
@@ -56,6 +56,10 @@ export class VcnPrcCheckInComponent implements OnInit {
             })
         });
       },
+    },
+    {
+      icon: 'close-circle',
+      classes: ['text-red-500', 'text-2xl'],
     },
   ];
 

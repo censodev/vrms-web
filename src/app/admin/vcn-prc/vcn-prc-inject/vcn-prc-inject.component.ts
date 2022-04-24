@@ -38,8 +38,8 @@ export class VcnPrcInjectComponent implements OnInit {
   };
   tableActions: SemiDatatableAction[] = [
     {
-      icon: 'select',
-      classes: ['text-blue-500'],
+      icon: 'check-circle',
+      classes: ['text-green-500', 'text-2xl'],
       handler: (rowValue: VcnProfileRes) => {
         this.modal.success({
           nzTitle: `Xác nhận đã tiêm cho bệnh nhân <b>${rowValue.patientProfile.fullName}</b>?`,
