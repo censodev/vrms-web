@@ -42,8 +42,7 @@ export class VcnPrcTestFormComponent implements OnInit {
         map(params => params['id']),
         concatMap(id => this.profileService.getVcnProfile(id)),
         tap(res => this.vcnProfile = res.data),
-        concatMap(res => this.vcnRssService.getPackage(res.data.selectedPackageId)),
-        concatMap(res => this.vcnRssService.getScreeningTmpl(res.data.screeningTemplateId)),
+        concatMap(res => this.vcnRssService.getScreeningTmpl(res.data.selectedPackage.screeningTemplateId)),
         tap(res => {
           this.screeningTmpl = res.data
           this.screeningTmplLoading = false
@@ -66,8 +65,8 @@ export class VcnPrcTestFormComponent implements OnInit {
       vcnProfileId: this.vcnProfile.id,
       data: this.screeningTmpl.data,
     }).subscribe({
-      next: () => {
-        this.msg.success('Gửi biểu mẫu thành công')
+      next: res => {
+        this.msg.success(res.message)
         this.router.navigate(['/admin/vcn/prc/test'])
       },
       error: () => this.msg.error('Gửi biểu mẫu thất bại')

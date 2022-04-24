@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {VcnProfileStatusEnum} from "../../core/enums/vcn-profile-status.enum";
-import {Observable} from "rxjs";
 import {VcnProfileRes} from "../../core/payload/profile.payload";
 import {ProfileService} from "../../core/services/profile.service";
 import {map} from "rxjs/operators";
+import {NzMessageService} from "ng-zorro-antd/message";
 
 @Component({
   selector: 'app-guest-dashboard',
@@ -12,14 +11,25 @@ import {map} from "rxjs/operators";
 })
 export class GuestDashboardComponent implements OnInit {
   vcnProfiles!: VcnProfileRes[];
+  loading = true;
 
-  constructor(private profileService: ProfileService) {
+  constructor(private profileService: ProfileService,
+              private msg: NzMessageService) {
   }
 
   ngOnInit(): void {
     this.profileService.getMyVcnProfiles()
       .pipe(map(res => res.data.content))
-      .subscribe(data => this.vcnProfiles = data)
+      .subscribe({
+        next: data => {
+          this.vcnProfiles = data
+          this.loading = false
+        },
+        error: () => {
+          this.msg.error('Đã có lỗi xảy ra trong quá trình tải dữ liệu hồ sơ')
+          this.loading = false
+        }
+      })
   }
 
 }

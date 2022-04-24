@@ -1,0 +1,38 @@
+<nz-spin [nzSpinning]="loading">
+  <app-guest-patient-profile-detail
+    *ngIf="vcnProfile"
+    [profile]="vcnProfile.patientProfile"
+  ></app-guest-patient-profile-detail>
+  <nz-table #basicTable
+            *ngIf="vcnProfile"
+            class="mt-3"
+            [nzData]="[vcnProfile.selectedPackage]"
+            [nzShowPagination]="false"
+            [nzNoResult]="'Đang tải'"
+            [nzFrontPagination]="false">
+    <thead>
+    <tr>
+      <th>Mã sản phẩm</th>
+      <th>Tên sản phẩm</th>
+      <th>Thành tiền</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let rc of basicTable.data">
+      <td>{{rc.diseasesCode}}</td>
+      <td>{{rc.name}}</td>
+      <td>{{rc.price | currency: 'VND'}}</td>
+    </tr>
+    </tbody>
+  </nz-table>
+
+  <div *ngIf="vcnProfile" class="flex font-bold mt-3 items-end">
+    <span class="text-gray-500">Tổng số tiền phải thanh toán:</span>
+    <span class="pl-2 text-red-500 text-2xl">{{vcnProfile.selectedPackage.price | currency: 'VND'}}</span>
+  </div>
+
+  <div *ngIf="!loading" class="flex justify-center gap-2 mt-5">
+    <button nz-button class="bg-green-500 text-white border-0" (click)="pay()">Thanh toán</button>
+    <button nz-button class="bg-red-500 text-white border-0" (click)="cancel()">Hủy</button>
+  </div>
+</nz-spin>

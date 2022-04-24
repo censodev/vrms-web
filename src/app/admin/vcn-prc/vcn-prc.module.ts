@@ -15,6 +15,9 @@ import {NzTableModule} from "ng-zorro-antd/table";
 import {NzInputModule} from "ng-zorro-antd/input";
 import {NzButtonModule} from "ng-zorro-antd/button";
 import {FormsModule} from "@angular/forms";
+import { VcnPrcPaymentFormComponent } from './vcn-prc-payment/vcn-prc-payment-form/vcn-prc-payment-form.component';
+import {NzSpinModule} from "ng-zorro-antd/spin";
+import { VcnPrcInjectComponent } from './vcn-prc-inject/vcn-prc-inject.component';
 
 
 @NgModule({
@@ -23,19 +26,22 @@ import {FormsModule} from "@angular/forms";
     VcnPrcPaymentComponent,
     VcnPrcTestComponent,
     VcnPrcMonitorComponent,
-    VcnPrcTestFormComponent
+    VcnPrcTestFormComponent,
+    VcnPrcPaymentFormComponent,
+    VcnPrcInjectComponent
   ],
-    imports: [
-        CommonModule,
-        VcnPrcRoutingModule,
-        SemiDatatableModule,
-        NzModalModule,
-        GuestModule,
-        NzSelectModule,
-        NzTableModule,
-        NzInputModule,
-        NzButtonModule,
-        FormsModule,
-    ]
+  imports: [
+    CommonModule,
+    VcnPrcRoutingModule,
+    SemiDatatableModule,
+    NzModalModule,
+    GuestModule,
+    NzSelectModule,
+    NzTableModule,
+    NzInputModule,
+    NzButtonModule,
+    FormsModule,
+    NzSpinModule,
+  ]
 })
 export class VcnPrcModule { }

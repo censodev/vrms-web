@@ -5,3 +5,8 @@ export interface VcnProcessTestReq {
   data: VcnScreeningTmplDataRecord[];
   ok: boolean;
 }
+
+export interface VcnProcessPaymentReq {
+  vcnProfileId: number;
+  amount: number;
+}
