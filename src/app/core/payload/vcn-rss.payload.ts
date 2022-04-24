@@ -83,4 +83,5 @@ export interface VcnScreeningTmplUpdateReq {
 export interface VcnScreeningTmplDataRecord {
   type: VcnScreeningTmplDataTypeEnum;
   title: string;
+  value?: any;
 }

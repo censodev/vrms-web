@@ -33,4 +33,8 @@ export class ProfileService {
   getMyVcnProfiles(): Observable<Res<PageRes<VcnProfileRes>>> {
     return this.http.get<Res<PageRes<VcnProfileRes>>>(`${environment.apiEndpoint}/profile/vcn/me`);
   }
+
+  getVcnProfile(id: number): Observable<Res<VcnProfileRes>> {
+    return this.http.get<Res<VcnProfileRes>>(`${environment.apiEndpoint}/profile/vcn/${id}`);
+  }
 }

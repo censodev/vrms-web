@@ -44,6 +44,9 @@ import {NzModalModule} from "ng-zorro-antd/modal";
     GuestHeaderMobileComponent,
     GuestHeaderComponent
   ],
+  exports: [
+    GuestPatientProfileDetailComponent
+  ],
   imports: [
     CommonModule,
     GuestRoutingModule,

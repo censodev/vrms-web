@@ -10,6 +10,7 @@ import {VcnPrcService} from "../../../core/services/vcn-prc.service";
 import {NzMessageService} from "ng-zorro-antd/message";
 import {NzModalService} from "ng-zorro-antd/modal";
 import {VcnProfileRes} from "../../../core/payload/profile.payload";
+import {VcnProfileStatusEnum} from "../../../core/enums/vcn-profile-status.enum";
 
 @Component({
   selector: 'app-vcn-prc-check-in',
@@ -19,7 +20,7 @@ import {VcnProfileRes} from "../../../core/payload/profile.payload";
 export class VcnPrcCheckInComponent implements OnInit {
   @ViewChild('dataTable') dataTable!: SemiDatatableComponent;
 
-  apiUrl = environment.apiEndpoint + '/profile/vcn?status=CREATED';
+  apiUrl = `${environment.apiEndpoint}/profile/vcn?status=${VcnProfileStatusEnum.CREATED}`;
   tableMasks = {
     'patientProfile.birthday': (val: Date) => {
       return this.datePipe.transform(val, 'dd/MM/yyyy')
