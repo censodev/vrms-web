@@ -41,7 +41,10 @@ export class GuestVcnProfileCardComponent implements OnInit {
   cancelVcn(profile: VcnProfileRes) {
     this.vcnPrcService.cancel(profile.id)
       .subscribe({
-        next: () => this.msg.success('Hủy tiêm thành công'),
+        next: () => {
+          this.msg.success('Hủy tiêm thành công')
+          profile.status = VcnProfileStatusEnum.CANCELED
+        },
         error: () => this.msg.error('Không thể hủy tiêm'),
       })
   }
