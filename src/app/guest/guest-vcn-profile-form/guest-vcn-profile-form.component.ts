@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Location} from "@angular/common";
-import {concatMap, debounceTime, filter, Observable, startWith} from "rxjs";
+import {concatMap, debounceTime, filter, Observable, startWith, tap} from "rxjs";
 import {MstResourceService} from "../../core/services/mst-resource.service";
 import {PatientProfileRes} from "../../core/payload/profile.payload";
 import {ProfileService} from "../../core/services/profile.service";
@@ -28,6 +28,7 @@ export class GuestVcnProfileFormComponent implements OnInit {
   selectedPkg?: VcnPackageRes;
 
   vcnPkgFrmCtl = new FormControl('');
+  loadingPkg = true;
 
   constructor(public location: Location,
               private fb: FormBuilder,
@@ -60,7 +61,8 @@ export class GuestVcnProfileFormComponent implements OnInit {
         startWith(''),
         debounceTime(1000),
         concatMap(kw => this.vcnRssService.searchPackages(kw)),
-        map(res => res.data.content.filter(i => i.status == StatusEnum.ACTIVE))
+        map(res => res.data.content.filter(i => i.status == StatusEnum.ACTIVE)),
+        tap(() => this.loadingPkg = false),
       );
     this.vcnSites$ = this.vcnRssService.searchSites('')
       .pipe(map(res => res.data.content.filter(i => i.status == StatusEnum.ACTIVE)));
