@@ -6,3 +6,8 @@
   [masks]="tableMasks"
   [actions]="tableActions"
 ></app-semi-datatable>
+
+<ng-template #symptomsTmpl>
+  <div class="form-flex-label">Mô tả triệu chứng</div>
+  <textarea nz-input [(ngModel)]="symptoms" rows="5"></textarea>
+</ng-template>

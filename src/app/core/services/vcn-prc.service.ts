@@ -36,4 +36,8 @@ export class VcnPrcService {
   complete(vcnProfileId: number): Observable<Res<any>> {
     return this.http.post<Res<any>>(`${environment.apiEndpoint}/vcn/process/complete`, {vcnProfileId})
   }
+
+  fail(body: { symptoms: string; vcnProfileId: number }): Observable<Res<any>> {
+    return this.http.post<Res<any>>(`${environment.apiEndpoint}/vcn/process/fail`, body)
+  }
 }

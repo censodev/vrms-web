@@ -55,7 +55,7 @@ export class VcnPrcTestFormComponent implements OnInit {
     if (this.screeningTmpl.data.some(rc => !rc.hasOwnProperty('value') || rc.value === '')) {
       this.modal.warning({
         nzTitle: `Biểu mẫu chưa hoàn thiện`,
-        nzContent: 'Vui lòng điền đầy đủ thông tin vào biểu mẫu khám sàng lọc',
+        nzContent: 'Vui lòng điền đầy đủ thông tin vào biểu mẫu khám sàng lọc trước khi gửi',
         nzOkText: 'Xác nhận',
       });
       return

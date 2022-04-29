@@ -57,6 +57,27 @@ export class VcnPrcInjectComponent implements OnInit {
         });
       },
     },
+    {
+      icon: 'close-circle',
+      classes: ['text-red-500', 'text-2xl'],
+      handler: (rowValue: VcnProfileRes) => {
+        this.modal.error({
+          nzTitle: `Hủy tiêm với bệnh nhân <b>${rowValue.patientProfile.fullName}</b>?`,
+          nzContent: 'Tác vụ không thể hoàn tác',
+          nzOkText: 'Đồng ý',
+          nzOkDanger: true,
+          nzCancelText: 'Hủy',
+          nzOnOk: () => this.vcnPrcService.cancel(rowValue.id)
+            .subscribe({
+              next: res => {
+                this.msg.success(res.message)
+                this.dataTable.reload()
+              },
+              error: () => this.msg.error('Thao tác thất bại'),
+            })
+        });
+      },
+    },
   ];
   constructor(private datePipe: DatePipe,
               private vcnPrcService: VcnPrcService,

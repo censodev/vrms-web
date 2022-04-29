@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {
   SemiDatatableAction,
   SemiDatatableComponent
@@ -19,6 +19,7 @@ import {NzModalService} from "ng-zorro-antd/modal";
 })
 export class VcnPrcMonitorComponent implements OnInit {
   @ViewChild('dataTable') dataTable!: SemiDatatableComponent;
+  @ViewChild('symptomsTmpl', {read: TemplateRef}) symptomsTmpl!: TemplateRef<any>;
 
   apiUrl = `${environment.apiEndpoint}/profile/vcn?status=${VcnProfileStatusEnum.INJECTED}`;
   tableMasks = {
@@ -60,8 +61,29 @@ export class VcnPrcMonitorComponent implements OnInit {
     {
       icon: 'close-circle',
       classes: ['text-red-500', 'text-2xl'],
+      handler: (rowValue: VcnProfileRes) => {
+        this.modal.create({
+          nzTitle: `Ghi nhận triệu chứng với bệnh nhân <b>${rowValue.patientProfile.fullName}</b>`,
+          nzContent: this.symptomsTmpl,
+          nzOkText: 'Gửi',
+          nzOkDanger: true,
+          nzCancelText: 'Hủy',
+          nzOnOk: () => this.vcnPrcService.fail({
+            vcnProfileId: rowValue.id,
+            symptoms: this.symptoms,
+          }).subscribe({
+            next: res => {
+              this.msg.success(res.message)
+              this.dataTable.reload()
+              this.symptoms = '';
+            },
+            error: () => this.msg.error('Thao tác thất bại'),
+          })
+        });
+      },
     },
   ];
+  symptoms = '';
 
   constructor(private datePipe: DatePipe,
               private vcnPrcService: VcnPrcService,
