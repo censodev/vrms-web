@@ -10,6 +10,7 @@ import {VcnRssService} from "../../core/services/vcn-rss.service";
 import {VcnPackageRes, VcnSiteRes} from "../../core/payload/vcn-rss.payload";
 import {NzMessageService} from "ng-zorro-antd/message";
 import {Router} from "@angular/router";
+import {StatusEnum} from "../../core/enums/status.enum";
 
 @Component({
   selector: 'app-guest-vcn-profile-form',
@@ -59,10 +60,10 @@ export class GuestVcnProfileFormComponent implements OnInit {
         startWith(''),
         debounceTime(1000),
         concatMap(kw => this.vcnRssService.searchPackages(kw)),
-        map(res => res.data.content)
+        map(res => res.data.content.filter(i => i.status == StatusEnum.ACTIVE))
       );
     this.vcnSites$ = this.vcnRssService.searchSites('')
-      .pipe(map(res => res.data.content));
+      .pipe(map(res => res.data.content.filter(i => i.status == StatusEnum.ACTIVE)));
   }
 
   submit() {

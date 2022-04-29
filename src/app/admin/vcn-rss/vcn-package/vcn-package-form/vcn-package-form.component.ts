@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {concatMap, map, tap} from "rxjs/operators";
 import {filter, Observable} from "rxjs";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
@@ -24,7 +24,8 @@ export class VcnPackageFormComponent implements OnInit {
               private fb: FormBuilder,
               private vcnRssService: VcnRssService,
               private router: Router,
-              private msg: NzMessageService) { }
+              private msg: NzMessageService) {
+  }
 
   ngOnInit(): void {
     this.masterForm = this.fb.group({
@@ -51,8 +52,9 @@ export class VcnPackageFormComponent implements OnInit {
         console.log(this.masterForm.value)
       })
     this.screeningTmpl$ = this.vcnRssService.searchScreeningTmpl('')
-      .pipe(map(res => res.data.content))
+      .pipe(map(res => res.data.content.filter(i => i.status == StatusEnum.ACTIVE)))
   }
+
   submit() {
     const obs$ = this.method === 'create'
       ? this.vcnRssService.createPackage(this.masterForm.value)

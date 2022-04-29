@@ -3,7 +3,7 @@ import {PageRes} from "../../payload/page.res";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Res} from "../../payload/res";
 import {concatMap, map, tap} from "rxjs/operators";
-import {BehaviorSubject, combineLatest, debounceTime, startWith} from "rxjs";
+import {BehaviorSubject, combineLatest, debounceTime, startWith, Subject} from "rxjs";
 import {FormControl} from "@angular/forms";
 
 export interface SemiDatatableAction {
@@ -27,6 +27,7 @@ export class SemiDatatableComponent implements OnInit, OnChanges {
   @Input() page = 0;
   @Input() size = 10;
   @Input() emptyCell = '-';
+  @Input() noResult = 'Không có dữ liệu';
 
   data: PageRes<any> = {
     content: [],
@@ -34,6 +35,7 @@ export class SemiDatatableComponent implements OnInit, OnChanges {
   };
   page$ = new BehaviorSubject(this.page);
   size$ = new BehaviorSubject(this.size);
+  reload$ = new Subject();
   searchFrmCtl = new FormControl();
   loading = true;
 
@@ -49,6 +51,7 @@ export class SemiDatatableComponent implements OnInit, OnChanges {
           startWith(''),
           debounceTime(500),
           tap(() => this.loading = true)),
+        this.reload$.pipe(startWith(1)),
       ])
         .pipe(
           concatMap(params => {
@@ -73,5 +76,18 @@ export class SemiDatatableComponent implements OnInit, OnChanges {
     if (act.handler) {
       act.handler(rowValue)
     }
+  }
+
+  findPropChainValue(obj: any, propChain: string): any {
+    if (propChain.includes('.')) {
+      return propChain.split('.').reduce((acc, cur) => {
+        return acc[cur]
+      }, obj)
+    }
+    return obj[propChain]
+  }
+
+  reload(): void {
+    this.reload$.next(1)
   }
 }
