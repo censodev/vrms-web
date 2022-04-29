@@ -29,9 +29,10 @@ export class GuestVcnProfileCardComponent implements OnInit {
   }
 
   openDeleteModal(profile: VcnProfileRes) {
-    this.modal.confirm({
-      nzTitle: 'Bạn có chắc chắn hủy tiêm?',
+    this.modal.error({
+      nzTitle: 'Bạn có chắc chắn muốn hủy tiêm?',
       nzContent: 'Thao tác không thể hoàn tác',
+      nzOkDanger: true,
       nzOkText: 'Có',
       nzCancelText: 'Không',
       nzOnOk: () => this.cancelVcn(profile),
@@ -41,7 +42,10 @@ export class GuestVcnProfileCardComponent implements OnInit {
   cancelVcn(profile: VcnProfileRes) {
     this.vcnPrcService.cancel(profile.id)
       .subscribe({
-        next: () => this.msg.success('Hủy tiêm thành công'),
+        next: () => {
+          this.msg.success('Hủy tiêm thành công')
+          profile.status = VcnProfileStatusEnum.CANCELED
+        },
         error: () => this.msg.error('Không thể hủy tiêm'),
       })
   }

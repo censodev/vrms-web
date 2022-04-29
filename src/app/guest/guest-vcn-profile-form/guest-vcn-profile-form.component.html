@@ -10,18 +10,22 @@
       <label class="form-flex-label">Hồ sơ cá nhân <span class="text-red-500">*</span></label>
       <div class="flex w-full">
         <nz-select class="grow" formControlName="patientProfileId">
-          <nz-option *ngFor="let profile of patientProfiles$ | async" [nzValue]="profile.id" [nzLabel]="profile.fullName"></nz-option>
+          <nz-option *ngFor="let profile of patientProfiles$ | async" [nzValue]="profile.id"
+                     [nzLabel]="profile.fullName"></nz-option>
         </nz-select>
         <a routerLink="/guest/register/profile" nz-button nzType="primary" class="ml-2">Tạo hồ sơ</a>
       </div>
     </div>
-    <app-guest-patient-profile-detail class="px-5" *ngIf="selectedProfile" [profile]="selectedProfile"></app-guest-patient-profile-detail>
+    <app-guest-patient-profile-detail class="px-5" *ngIf="selectedProfile"
+                                      [profile]="selectedProfile"></app-guest-patient-profile-detail>
     <nz-divider></nz-divider>
     <div nz-col nzSpan="24" class="form-flex-group mb-3 px-1">
-      <label class="form-flex-label">Chọn gói tiêm chủng <span class="text-red-500">*</span>&nbsp;<span class="text-green-500" *ngIf="selectedPkg">{{selectedPkg.name}}</span></label>
+      <label class="form-flex-label">Chọn gói tiêm chủng <span class="text-red-500">*</span>&nbsp;<span
+        class="text-green-500" *ngIf="selectedPkg">{{selectedPkg.name}}</span></label>
       <nz-input-group nzPrefixIcon="search">
         <input nz-input placeholder="Tìm kiếm" [formControl]="vcnPkgFrmCtl"/>
       </nz-input-group>
+      <nz-spin [nzSpinning]="loadingPkg">
         <div nz-row class="mt-2">
           <div nz-col nzMd="12" nzXs="24" class="p-1" *ngFor="let pkg of vcnPackages$ | async">
             <nz-card class="flex flex-col w-full h-full border-2"
@@ -33,12 +37,14 @@
             </nz-card>
           </div>
         </div>
+      </nz-spin>
     </div>
     <nz-divider></nz-divider>
     <div nz-col nzMd="18" nzXs="24" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label">Chọn điểm tiêm <span class="text-red-500">*</span></label>
       <nz-select class="grow" nzPlaceHolder="Điểm tiêm" formControlName="selectedSiteId">
-        <nz-option *ngFor="let site of vcnSites$ | async" [nzValue]="site.id" [nzLabel]="site.name + ' (' + site.address + ')'"></nz-option>
+        <nz-option *ngFor="let site of vcnSites$ | async" [nzValue]="site.id"
+                   [nzLabel]="site.name + ' (' + site.address + ')'"></nz-option>
       </nz-select>
     </div>
     <div nz-col nzMd="6" nzXs="24" class="form-flex-group mb-3 px-1">
