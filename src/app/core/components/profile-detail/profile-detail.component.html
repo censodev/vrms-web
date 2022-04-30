@@ -1,0 +1,40 @@
+<h3 nz-typography>Thông tin cá nhân</h3>
+<app-patient-profile-detail
+  [profile]="profile.patientProfile"
+></app-patient-profile-detail>
+<nz-divider></nz-divider>
+<h3 nz-typography>Thông tin tiêm chủng</h3>
+<div nz-row>
+  <div nz-col nzMd="12" nzXs="24" class="form-flex-group mb-3 px-1">
+    <label class="form-flex-label">Gói tiêm chủng</label>
+    <div>{{profile.selectedPackage.name}}</div>
+  </div>
+  <div nz-col nzMd="12" nzXs="24" class="form-flex-group mb-3 px-1">
+    <label class="form-flex-label">Điểm tiêm</label>
+    <div>
+      {{profile.selectedSite.name}}
+      -
+      {{profile.selectedSite.province.name}},
+      {{profile.selectedSite.district.name}},
+      {{profile.selectedSite.ward.name}}
+    </div>
+  </div>
+  <div nz-col nzMd="12" nzXs="24" class="form-flex-group mb-3 px-1">
+    <label class="form-flex-label">Ngày tiêm</label>
+    <div>{{(profile.injectionTime | date: 'dd/MM/yyyy') || 'Chưa cập nhật'}}</div>
+  </div>
+  <div nz-col nzMd="12" nzXs="24" class="form-flex-group mb-3 px-1">
+    <label class="form-flex-label">Trạng thái</label>
+    <ng-container [ngSwitch]="profile.status">
+      <div *ngSwitchCase="vcnProfileStatusEnum.CREATED" class="profile-create">Đã đăng ký</div>
+      <div *ngSwitchCase="vcnProfileStatusEnum.CHECKED_IN" class="profile-process">Đã đến điểm tiêm</div>
+      <div *ngSwitchCase="vcnProfileStatusEnum.TESTED_FAILED" class="profile-danger">Khám sàng lọc thất bại</div>
+      <div *ngSwitchCase="vcnProfileStatusEnum.TESTED_PASSED" class="profile-process">Khám sàng lọc thành công</div>
+      <div *ngSwitchCase="vcnProfileStatusEnum.PAID" class="profile-process">Đã thanh toán</div>
+      <div *ngSwitchCase="vcnProfileStatusEnum.INJECTED" class="profile-process">Theo dõi sau tiêm</div>
+      <div *ngSwitchCase="vcnProfileStatusEnum.COMPLETED" class="profile-success">Đã hoàn thành</div>
+      <div *ngSwitchCase="vcnProfileStatusEnum.CANCELED" class="profile-danger">Đã hủy tiêm</div>
+      <div *ngSwitchCase="vcnProfileStatusEnum.FAILED" class="profile-danger">Triệu chứng xấu</div>
+    </ng-container>
+  </div>
+</div>

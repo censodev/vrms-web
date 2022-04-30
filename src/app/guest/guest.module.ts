@@ -28,6 +28,7 @@ import {GuestHeaderComponent} from './guest-header/guest-header.component';
 import {NzModalModule} from "ng-zorro-antd/modal";
 import {NzSpinModule} from "ng-zorro-antd/spin";
 import {PatientProfileDetailModule} from "../core/components/patient-profile-detail/patient-profile-detail.module";
+import {ProfileDetailModule} from "../core/components/profile-detail/profile-detail.module";
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import {PatientProfileDetailModule} from "../core/components/patient-profile-det
     NzModalModule,
     NzSpinModule,
     PatientProfileDetailModule,
+    ProfileDetailModule,
   ]
 })
 export class GuestModule {
