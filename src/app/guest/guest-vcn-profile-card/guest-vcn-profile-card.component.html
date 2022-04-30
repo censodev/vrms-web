@@ -1,4 +1,4 @@
-<nz-card class="grow" [nzActions]="canBeCanceled(profile.status) ? [actionDetails, actionCancel] : [actionDetails]">
+<nz-card class="flex flex-col grow" [nzActions]="canBeCanceled(profile.status) ? [actionDetails, actionCancel] : [actionDetails]">
   <h3 nz-typography>{{profile.patientProfile.fullName}}</h3>
   <ng-container [ngSwitch]="profile.status">
     <div *ngSwitchCase="vcnProfileStatusEnum.CREATED" class="profile-card-status">Đã đăng ký</div>
