@@ -21,3 +21,7 @@
   border-color: theme('colors.yellow.500');
   color: theme('colors.yellow.500');
 }
+
+::ng-deep .ant-card-body {
+  flex-grow: 1;
+}
