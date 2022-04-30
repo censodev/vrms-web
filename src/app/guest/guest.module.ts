@@ -22,14 +22,12 @@ import {GuestVcnProfileCardComponent} from './guest-vcn-profile-card/guest-vcn-p
 import {GuestVcnProfileFormComponent} from './guest-vcn-profile-form/guest-vcn-profile-form.component';
 import {GuestVcnProfileDetailComponent} from './guest-vcn-profile-detail/guest-vcn-profile-detail.component';
 import {GuestPatientProfileFormComponent} from './guest-patient-profile-form/guest-patient-profile-form.component';
-import {
-  GuestPatientProfileDetailComponent
-} from './guest-patient-profile-detail/guest-patient-profile-detail.component';
 import {GuestNavbarMobileComponent} from './guest-navbar-mobile/guest-navbar-mobile.component';
 import {GuestHeaderMobileComponent} from './guest-header-mobile/guest-header-mobile.component';
 import {GuestHeaderComponent} from './guest-header/guest-header.component';
 import {NzModalModule} from "ng-zorro-antd/modal";
 import {NzSpinModule} from "ng-zorro-antd/spin";
+import {PatientProfileDetailModule} from "../core/components/patient-profile-detail/patient-profile-detail.module";
 
 
 @NgModule({
@@ -40,13 +38,9 @@ import {NzSpinModule} from "ng-zorro-antd/spin";
     GuestVcnProfileFormComponent,
     GuestVcnProfileDetailComponent,
     GuestPatientProfileFormComponent,
-    GuestPatientProfileDetailComponent,
     GuestNavbarMobileComponent,
     GuestHeaderMobileComponent,
     GuestHeaderComponent
-  ],
-  exports: [
-    GuestPatientProfileDetailComponent
   ],
   imports: [
     CommonModule,
@@ -67,6 +61,7 @@ import {NzSpinModule} from "ng-zorro-antd/spin";
     NzDividerModule,
     NzModalModule,
     NzSpinModule,
+    PatientProfileDetailModule,
   ]
 })
 export class GuestModule {

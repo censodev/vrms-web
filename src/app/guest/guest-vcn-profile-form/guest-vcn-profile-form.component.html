@@ -16,8 +16,8 @@
         <a routerLink="/guest/register/profile" nz-button nzType="primary" class="ml-2">Tạo hồ sơ</a>
       </div>
     </div>
-    <app-guest-patient-profile-detail class="px-5" *ngIf="selectedProfile"
-                                      [profile]="selectedProfile"></app-guest-patient-profile-detail>
+    <app-patient-profile-detail class="px-5" *ngIf="selectedProfile"
+                                      [profile]="selectedProfile"></app-patient-profile-detail>
     <nz-divider></nz-divider>
     <div nz-col nzSpan="24" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label">Chọn gói tiêm chủng <span class="text-red-500">*</span>&nbsp;<span

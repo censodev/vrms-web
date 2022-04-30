@@ -18,6 +18,7 @@ import {FormsModule} from "@angular/forms";
 import { VcnPrcPaymentFormComponent } from './vcn-prc-payment/vcn-prc-payment-form/vcn-prc-payment-form.component';
 import {NzSpinModule} from "ng-zorro-antd/spin";
 import { VcnPrcInjectComponent } from './vcn-prc-inject/vcn-prc-inject.component';
+import {PatientProfileDetailModule} from "../../core/components/patient-profile-detail/patient-profile-detail.module";
 
 
 @NgModule({
@@ -30,18 +31,19 @@ import { VcnPrcInjectComponent } from './vcn-prc-inject/vcn-prc-inject.component
     VcnPrcPaymentFormComponent,
     VcnPrcInjectComponent
   ],
-  imports: [
-    CommonModule,
-    VcnPrcRoutingModule,
-    SemiDatatableModule,
-    NzModalModule,
-    GuestModule,
-    NzSelectModule,
-    NzTableModule,
-    NzInputModule,
-    NzButtonModule,
-    FormsModule,
-    NzSpinModule,
-  ]
+    imports: [
+        CommonModule,
+        VcnPrcRoutingModule,
+        SemiDatatableModule,
+        NzModalModule,
+        GuestModule,
+        NzSelectModule,
+        NzTableModule,
+        NzInputModule,
+        NzButtonModule,
+        FormsModule,
+        NzSpinModule,
+        PatientProfileDetailModule,
+    ]
 })
 export class VcnPrcModule { }
