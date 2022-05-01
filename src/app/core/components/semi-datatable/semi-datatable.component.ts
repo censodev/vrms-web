@@ -30,6 +30,7 @@ export class SemiDatatableComponent implements OnInit, OnChanges {
   @Input() noResult = 'Không có dữ liệu';
 
   @Output() rowClick = new EventEmitter();
+  @Output() rowDblClick = new EventEmitter();
 
   data: PageRes<any> = {
     content: [],

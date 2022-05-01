@@ -6,6 +6,7 @@ import {VcnProfileRes} from "../../../core/payload/profile.payload";
 import {DatePipe} from "@angular/common";
 import {VcnProfileStatusEnum} from "../../../core/enums/vcn-profile-status.enum";
 import {Router} from "@angular/router";
+import {ProfileService} from "../../../core/services/profile.service";
 
 @Component({
   selector: 'app-vcn-prc-test',
@@ -38,7 +39,8 @@ export class VcnPrcTestComponent implements OnInit {
   ];
 
   constructor(private datePipe: DatePipe,
-              private router: Router) { }
+              private router: Router,
+              public profileService: ProfileService) { }
 
   ngOnInit(): void {
   }
