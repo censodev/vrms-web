@@ -5,4 +5,5 @@
   [titles]="['CMND/CCCD', 'Họ tên', 'Ngày sinh', 'Giới tính', 'Gói tiêm chủng']"
   [masks]="tableMasks"
   [actions]="tableActions"
+  (rowClick)="profileService.openProfileDetailModal($event)"
 ></app-semi-datatable>

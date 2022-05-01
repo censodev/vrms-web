@@ -13,6 +13,7 @@ import {IconsProviderModule} from './icons-provider.module';
 import {CookieModule} from "ngx-cookie";
 import {AuthInterceptor} from "./auth/auth.interceptor";
 import {NzMessageModule} from "ng-zorro-antd/message";
+import {NzModalModule} from "ng-zorro-antd/modal";
 
 registerLocaleData(en);
 
@@ -29,6 +30,7 @@ registerLocaleData(en);
     IconsProviderModule,
     CookieModule.forRoot(),
     NzMessageModule,
+    NzModalModule,
   ],
   providers: [
     {provide: NZ_I18N, useValue: en_US},

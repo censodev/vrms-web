@@ -32,6 +32,10 @@
       {{profile.selectedSite.ward.name}}
     </div>
   </div>
+  <div nz-col nzMd="24" nzXs="24" class="form-flex-group mb-3 px-1">
+    <label class="form-flex-label">Triệu chứng sau tiêm chủng</label>
+    <div>{{profile.symptoms || 'Không ghi nhận xuất hiện triệu chứng xấu'}}</div>
+  </div>
 </div>
 <nz-table #basicTable
           class="mt-3"
@@ -59,14 +63,7 @@
   </tbody>
 </nz-table>
 
-<div nz-row class="mt-5">
-  <div nz-col nzMd="24" nzXs="24" class="form-flex-group mb-3 px-1">
-    <label class="form-flex-label">Triệu chứng sau tiêm chủng</label>
-    <div>{{profile.symptoms || 'Không ghi nhận xuất hiện triệu chứng xấu'}}</div>
-  </div>
-</div>
-<nz-divider></nz-divider>
-<h3 nz-typography>Thông tin thanh toán</h3>
+<h3 nz-typography class="mt-6">Thông tin thanh toán</h3>
 <nz-table #paymentTable
           class="mt-3"
           [nzData]="profilePayments"
@@ -94,8 +91,8 @@
   </tr>
   </tbody>
 </nz-table>
-<nz-divider></nz-divider>
-<h3 nz-typography>Lịch sử xử lý hồ sơ</h3>
+
+<h3 nz-typography class="mt-6">Lịch sử xử lý hồ sơ</h3>
 <nz-table #historyTable
           class="mt-3"
           [nzData]="profileHistories"
