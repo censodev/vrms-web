@@ -29,6 +29,8 @@ import {NzModalModule} from "ng-zorro-antd/modal";
 import {NzSpinModule} from "ng-zorro-antd/spin";
 import {PatientProfileDetailModule} from "../core/components/patient-profile-detail/patient-profile-detail.module";
 import {ProfileDetailModule} from "../core/components/profile-detail/profile-detail.module";
+import {VcnProfileStatusPipeModule} from "../core/pipes/vcn-profile-status/vcn-profile-status-pipe.module";
+import {VcnProfileStatusDirectiveModule} from "../core/directives/vcn-profile-status/vcn-profile-status-directive.module";
 
 
 @NgModule({
@@ -64,6 +66,8 @@ import {ProfileDetailModule} from "../core/components/profile-detail/profile-det
     NzSpinModule,
     PatientProfileDetailModule,
     ProfileDetailModule,
+    VcnProfileStatusDirectiveModule,
+    VcnProfileStatusPipeModule,
   ]
 })
 export class GuestModule {

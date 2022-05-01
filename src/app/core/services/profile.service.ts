@@ -5,7 +5,7 @@ import {Res} from "../payload/res";
 import {
   PatientProfileCreateReq,
   PatientProfileRes,
-  VcnProfileCreateReq,
+  VcnProfileCreateReq, VcnProfileHistoryRes, VcnProfilePaymentRes,
   VcnProfileRes
 } from "../payload/profile.payload";
 import {environment} from "../../../environments/environment";
@@ -36,5 +36,13 @@ export class ProfileService {
 
   getVcnProfile(id: number): Observable<Res<VcnProfileRes>> {
     return this.http.get<Res<VcnProfileRes>>(`${environment.apiEndpoint}/profile/vcn/${id}`);
+  }
+
+  getVcnProfileHistories(profileId: number): Observable<Res<VcnProfileHistoryRes[]>> {
+    return this.http.get<Res<VcnProfileHistoryRes[]>>(`${environment.apiEndpoint}/profile/vcn/${profileId}/history`);
+  }
+
+  getVcnProfilePayments(profileId: number): Observable<Res<VcnProfilePaymentRes[]>> {
+    return this.http.get<Res<VcnProfilePaymentRes[]>>(`${environment.apiEndpoint}/profile/vcn/${profileId}/payment`);
   }
 }

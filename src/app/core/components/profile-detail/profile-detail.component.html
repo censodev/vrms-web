@@ -9,7 +9,20 @@
     <label class="form-flex-label">Gói tiêm chủng</label>
     <div>{{profile.selectedPackage.name}}</div>
   </div>
-  <div nz-col nzMd="12" nzXs="24" class="form-flex-group mb-3 px-1">
+  <div nz-col nzMd="6" nzXs="12" class="form-flex-group mb-3 px-1">
+    <label class="form-flex-label">Ngày tiêm</label>
+    <div>{{(profile.injectionTime | date: 'dd/MM/yyyy') || 'Chưa cập nhật'}}</div>
+  </div>
+  <div nz-col nzMd="6" nzXs="12" class="form-flex-group mb-3 px-1">
+    <label class="form-flex-label">Trạng thái</label>
+    <div appVcnProfileStatus
+         [vcnProfileStatus]="profile.status"
+         primaryClass="text-blue-500"
+         warningClass="text-yellow-500"
+         successClass="text-green-500"
+         dangerClass="text-red-500">{{profile.status | vcnProfileStatus}}</div>
+  </div>
+  <div nz-col nzMd="24" nzXs="24" class="form-flex-group mb-3 px-1">
     <label class="form-flex-label">Điểm tiêm</label>
     <div>
       {{profile.selectedSite.name}}
@@ -19,22 +32,94 @@
       {{profile.selectedSite.ward.name}}
     </div>
   </div>
-  <div nz-col nzMd="12" nzXs="24" class="form-flex-group mb-3 px-1">
-    <label class="form-flex-label">Ngày tiêm</label>
-    <div>{{(profile.injectionTime | date: 'dd/MM/yyyy') || 'Chưa cập nhật'}}</div>
-  </div>
-  <div nz-col nzMd="12" nzXs="24" class="form-flex-group mb-3 px-1">
-    <label class="form-flex-label">Trạng thái</label>
-    <ng-container [ngSwitch]="profile.status">
-      <div *ngSwitchCase="vcnProfileStatusEnum.CREATED" class="profile-create">Đã đăng ký</div>
-      <div *ngSwitchCase="vcnProfileStatusEnum.CHECKED_IN" class="profile-process">Đã đến điểm tiêm</div>
-      <div *ngSwitchCase="vcnProfileStatusEnum.TESTED_FAILED" class="profile-danger">Khám sàng lọc thất bại</div>
-      <div *ngSwitchCase="vcnProfileStatusEnum.TESTED_PASSED" class="profile-process">Khám sàng lọc thành công</div>
-      <div *ngSwitchCase="vcnProfileStatusEnum.PAID" class="profile-process">Đã thanh toán</div>
-      <div *ngSwitchCase="vcnProfileStatusEnum.INJECTED" class="profile-process">Theo dõi sau tiêm</div>
-      <div *ngSwitchCase="vcnProfileStatusEnum.COMPLETED" class="profile-success">Đã hoàn thành</div>
-      <div *ngSwitchCase="vcnProfileStatusEnum.CANCELED" class="profile-danger">Đã hủy tiêm</div>
-      <div *ngSwitchCase="vcnProfileStatusEnum.FAILED" class="profile-danger">Triệu chứng xấu</div>
-    </ng-container>
+</div>
+<nz-table #basicTable
+          class="mt-3"
+          [nzData]="profile.screeningTestResult"
+          [nzShowPagination]="false"
+          [nzNoResult]="'Chưa có kết quả'"
+          [nzFrontPagination]="false">
+  <thead>
+  <tr>
+    <th [colSpan]="2">Kết quả khám sàng lọc</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let rc of basicTable.data">
+    <td>
+      {{rc.title}}
+    </td>
+    <td *ngIf="rc.type === 'YES_NO'">
+      {{rc.value ? 'Có' : 'Không'}}
+    </td>
+    <td *ngIf="rc.type === 'NUMERAL'">
+      {{rc.value}}
+    </td>
+  </tr>
+  </tbody>
+</nz-table>
+
+<div nz-row class="mt-5">
+  <div nz-col nzMd="24" nzXs="24" class="form-flex-group mb-3 px-1">
+    <label class="form-flex-label">Triệu chứng sau tiêm chủng</label>
+    <div>{{profile.symptoms || 'Không ghi nhận xuất hiện triệu chứng xấu'}}</div>
   </div>
 </div>
+<nz-divider></nz-divider>
+<h3 nz-typography>Thông tin thanh toán</h3>
+<nz-table #paymentTable
+          class="mt-3"
+          [nzData]="profilePayments"
+          [nzShowPagination]="false"
+          [nzNoResult]="'Không có dữ liệu'"
+          [nzFrontPagination]="false">
+  <thead>
+  <tr>
+    <th>Nội dung</th>
+    <th>Số tiền</th>
+    <th>Ngày thanh toán</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let rc of paymentTable.data">
+    <td>
+      Thanh toán chi phí tiêm
+    </td>
+    <td>
+      {{rc.amount | currency: 'VND'}}
+    </td>
+    <td>
+      {{rc.createdAt | date: 'dd/MM/YYYY hh:mm:ss'}}
+    </td>
+  </tr>
+  </tbody>
+</nz-table>
+<nz-divider></nz-divider>
+<h3 nz-typography>Lịch sử xử lý hồ sơ</h3>
+<nz-table #historyTable
+          class="mt-3"
+          [nzData]="profileHistories"
+          [nzShowPagination]="false"
+          [nzNoResult]="'Không có dữ liệu'"
+          [nzFrontPagination]="false">
+  <thead>
+  <tr>
+    <th>Thời gian</th>
+    <th>Trạng thái</th>
+    <th *ngIf="isAdminOrAgent">Tác nhân</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let rc of historyTable.data">
+    <td>
+      {{rc.time | date: 'dd/MM/YYYY hh:mm:ss'}}
+    </td>
+    <td>
+      {{rc.status | vcnProfileStatus}}
+    </td>
+    <td *ngIf="isAdminOrAgent">
+      {{rc.createdBy.username || rc.createdBy.phone}}
+    </td>
+  </tr>
+  </tbody>
+</nz-table>

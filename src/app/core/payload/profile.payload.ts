@@ -1,8 +1,9 @@
 import {GenderEnum} from "../enums/gender.enum";
 import {StatusEnum} from "../enums/status.enum";
-import {VcnPackageRes, VcnSiteRes} from "./vcn-rss.payload";
+import {VcnPackageRes, VcnScreeningTmplDataRecord, VcnSiteRes} from "./vcn-rss.payload";
 import {VcnProfileStatusEnum} from "../enums/vcn-profile-status.enum";
 import {MstCountry, MstDistrict, MstNation, MstProvince, MstWard} from "./mst.payload";
+import {AccountRes} from "./account.payload";
 
 export interface PatientProfileRes {
   id: number;
@@ -55,4 +56,21 @@ export interface VcnProfileRes {
   selectedPackage: VcnPackageRes;
   selectedSiteId: number;
   selectedSite: VcnSiteRes;
+  symptoms: string;
+  screeningTestResult: VcnScreeningTmplDataRecord[];
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface VcnProfileHistoryRes {
+  id: number;
+  status: VcnProfileStatusEnum;
+  time: Date;
+  createdBy: AccountRes;
+}
+
+export interface VcnProfilePaymentRes {
+  id: number;
+  amount: number;
+  createdAt: Date;
 }

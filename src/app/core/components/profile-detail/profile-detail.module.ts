@@ -5,6 +5,9 @@ import {PatientProfileDetailModule} from "../patient-profile-detail/patient-prof
 import {NzTypographyModule} from "ng-zorro-antd/typography";
 import {NzGridModule} from "ng-zorro-antd/grid";
 import {NzDividerModule} from "ng-zorro-antd/divider";
+import {NzTableModule} from "ng-zorro-antd/table";
+import {VcnProfileStatusPipeModule} from "../../pipes/vcn-profile-status/vcn-profile-status-pipe.module";
+import {VcnProfileStatusDirectiveModule} from "../../directives/vcn-profile-status/vcn-profile-status-directive.module";
 
 
 
@@ -20,7 +23,10 @@ import {NzDividerModule} from "ng-zorro-antd/divider";
     PatientProfileDetailModule,
     NzTypographyModule,
     NzGridModule,
-    NzDividerModule
+    NzDividerModule,
+    NzTableModule,
+    VcnProfileStatusPipeModule,
+    VcnProfileStatusDirectiveModule
   ]
 })
 export class ProfileDetailModule { }
