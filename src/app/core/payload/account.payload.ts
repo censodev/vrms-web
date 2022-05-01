@@ -24,4 +24,5 @@ export interface AccountRes {
   email: string;
   role: string;
   status: StatusEnum;
+  phone: number;
 }

@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {PageRes} from "../../payload/page.res";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Res} from "../../payload/res";
@@ -28,6 +28,9 @@ export class SemiDatatableComponent implements OnInit, OnChanges {
   @Input() size = 10;
   @Input() emptyCell = '-';
   @Input() noResult = 'Không có dữ liệu';
+
+  @Output() rowClick = new EventEmitter();
+  @Output() rowDblClick = new EventEmitter();
 
   data: PageRes<any> = {
     content: [],

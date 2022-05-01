@@ -1,16 +1,11 @@
 <nz-card class="flex flex-col grow" [nzActions]="canBeCanceled(profile.status) ? [actionDetails, actionCancel] : [actionDetails]">
   <h3 nz-typography>{{profile.patientProfile.fullName}}</h3>
-  <ng-container [ngSwitch]="profile.status">
-    <div *ngSwitchCase="vcnProfileStatusEnum.CREATED" class="profile-card-status">Đã đăng ký</div>
-    <div *ngSwitchCase="vcnProfileStatusEnum.CHECKED_IN" class="profile-card-status profile-process">Đã đến điểm tiêm</div>
-    <div *ngSwitchCase="vcnProfileStatusEnum.TESTED_FAILED" class="profile-card-status profile-danger">Khám sàng lọc thất bại</div>
-    <div *ngSwitchCase="vcnProfileStatusEnum.TESTED_PASSED" class="profile-card-status profile-process">Khám sàng lọc thành công</div>
-    <div *ngSwitchCase="vcnProfileStatusEnum.PAID" class="profile-card-status profile-process">Đã thanh toán</div>
-    <div *ngSwitchCase="vcnProfileStatusEnum.INJECTED" class="profile-card-status profile-process">Theo dõi sau tiêm</div>
-    <div *ngSwitchCase="vcnProfileStatusEnum.COMPLETED" class="profile-card-status profile-success">Đã hoàn thành</div>
-    <div *ngSwitchCase="vcnProfileStatusEnum.CANCELED" class="profile-card-status profile-danger">Đã hủy tiêm</div>
-    <div *ngSwitchCase="vcnProfileStatusEnum.FAILED" class="profile-card-status profile-danger">Triệu chứng xấu</div>
-  </ng-container>
+  <div class="profile-card-status"
+       appVcnProfileStatus
+       [vcnProfileStatus]="profile.status"
+       warningClass="profile-process"
+       dangerClass="profile-danger"
+       successClass="profile-success">{{profile.status | vcnProfileStatus}}</div>
   <table class="mt-3">
     <tbody>
     <tr>

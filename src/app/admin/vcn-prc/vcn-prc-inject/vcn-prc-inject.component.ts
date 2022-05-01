@@ -11,6 +11,7 @@ import {DatePipe} from "@angular/common";
 import {VcnPrcService} from "../../../core/services/vcn-prc.service";
 import {NzMessageService} from "ng-zorro-antd/message";
 import {NzModalService} from "ng-zorro-antd/modal";
+import {ProfileService} from "../../../core/services/profile.service";
 
 @Component({
   selector: 'app-vcn-prc-inject',
@@ -82,7 +83,8 @@ export class VcnPrcInjectComponent implements OnInit {
   constructor(private datePipe: DatePipe,
               private vcnPrcService: VcnPrcService,
               private msg: NzMessageService,
-              private modal: NzModalService) { }
+              private modal: NzModalService,
+              public  profileService: ProfileService) { }
 
   ngOnInit(): void {
   }

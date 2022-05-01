@@ -1,8 +1,8 @@
 <nz-spin [nzSpinning]="loading">
-  <app-guest-patient-profile-detail
+  <app-patient-profile-detail
     *ngIf="vcnProfile"
     [profile]="vcnProfile.patientProfile"
-  ></app-guest-patient-profile-detail>
+  ></app-patient-profile-detail>
   <nz-table #basicTable
             *ngIf="vcnProfile"
             class="mt-3"

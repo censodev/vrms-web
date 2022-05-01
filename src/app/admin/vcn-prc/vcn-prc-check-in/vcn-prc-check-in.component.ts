@@ -11,6 +11,8 @@ import {NzMessageService} from "ng-zorro-antd/message";
 import {NzModalService} from "ng-zorro-antd/modal";
 import {VcnProfileRes} from "../../../core/payload/profile.payload";
 import {VcnProfileStatusEnum} from "../../../core/enums/vcn-profile-status.enum";
+import {ProfileDetailComponent} from "../../../core/components/profile-detail/profile-detail.component";
+import {ProfileService} from "../../../core/services/profile.service";
 
 @Component({
   selector: 'app-vcn-prc-check-in',
@@ -83,7 +85,8 @@ export class VcnPrcCheckInComponent implements OnInit {
   constructor(private datePipe: DatePipe,
               private vcnPrcService: VcnPrcService,
               private msg: NzMessageService,
-              private modal: NzModalService) {
+              private modal: NzModalService,
+              public profileService: ProfileService) {
   }
 
   ngOnInit(): void {

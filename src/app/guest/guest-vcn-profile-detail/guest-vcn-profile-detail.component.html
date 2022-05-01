@@ -1,1 +1,14 @@
-<p>guest-vcn-profile-detail works!</p>
+<nz-page-header
+  class="site-page-header"
+  (nzBack)="this.location.back()"
+  nzBackIcon
+  nzTitle="Thông tin chi tiết hồ sơ">
+</nz-page-header>
+<nz-spin [nzSpinning]="loading" class="pt-3 px-10">
+  <app-profile-detail
+    *ngIf="profile"
+    [profile]="profile"
+    [profileHistories]="profileHistories"
+    [profilePayments]="profilePayments"
+  ></app-profile-detail>
+</nz-spin>

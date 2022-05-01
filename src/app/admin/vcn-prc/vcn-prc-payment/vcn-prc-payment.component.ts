@@ -6,6 +6,7 @@ import {SemiDatatableAction} from "../../../core/components/semi-datatable/semi-
 import {VcnProfileRes} from "../../../core/payload/profile.payload";
 import {DatePipe} from "@angular/common";
 import {Router} from "@angular/router";
+import {ProfileService} from "../../../core/services/profile.service";
 
 @Component({
   selector: 'app-vcn-prc-payment',
@@ -38,7 +39,8 @@ export class VcnPrcPaymentComponent implements OnInit {
   ];
 
   constructor(private datePipe: DatePipe,
-              private router: Router) { }
+              private router: Router,
+              public profileService: ProfileService) { }
 
   ngOnInit(): void {
   }

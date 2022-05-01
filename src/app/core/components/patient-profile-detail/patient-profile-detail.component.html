@@ -21,15 +21,15 @@
     </div>
     <div nz-col nzMd="6" nzXs="12" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label">Quốc gia</label>
-      <div>{{(country$|async)?.name}}</div>
+      <div>{{profile.country.name}}</div>
     </div>
     <div nz-col nzMd="6" nzXs="12" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label">Dân tộc</label>
-      <div>{{(nation$|async)?.name}}</div>
+      <div>{{profile.nation.name}}</div>
     </div>
     <div nz-col nzMd="12" nzXs="24" class="form-flex-group mb-3 px-1">
       <label class="form-flex-label">Địa chỉ thường trú</label>
-      <div>{{(province$|async)?.name}}, {{(district$|async)?.name}}, {{(ward$|async)?.name}}, {{profile.address}}</div>
+      <div>{{profile.province.name}}, {{profile.district.name}}, {{profile.ward.name}}, {{profile.address}}</div>
     </div>
   </div>
 </div>
