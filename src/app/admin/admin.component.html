@@ -109,9 +109,9 @@
 
 <nz-dropdown-menu #menuProfile="nzDropdownMenu">
   <ul nz-menu>
-    <li nz-menu-item routerLink="/pages/user/profile" [nzDisabled]="true">
+    <li nz-menu-item>
       <i nz-icon nzType="user"></i>
-      <span class="pl-2">Hồ sơ cá nhân</span>
+      <span class="pl-2">{{user.username}}</span>
     </li>
     <li nz-menu-divider></li>
     <li nz-menu-item class="text-red-500" (click)="logout()">
