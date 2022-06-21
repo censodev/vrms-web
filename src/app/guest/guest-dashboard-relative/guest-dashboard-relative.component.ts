@@ -1,25 +1,28 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {VcnProfileRes} from "../../core/payload/profile.payload";
 import {ProfileService} from "../../core/services/profile.service";
-import {map} from "rxjs/operators";
 import {NzMessageService} from "ng-zorro-antd/message";
+import {map} from "rxjs/operators";
+import {Location} from "@angular/common";
 
 @Component({
-  selector: 'app-guest-dashboard',
-  templateUrl: './guest-dashboard.component.html',
-  styleUrls: ['./guest-dashboard.component.scss']
+  selector: 'app-guest-dashboard-relative',
+  templateUrl: './guest-dashboard-relative.component.html',
+  styleUrls: ['./guest-dashboard-relative.component.scss']
 })
-export class GuestDashboardComponent implements OnInit {
+export class GuestDashboardRelativeComponent implements OnInit {
+
   vcnProfiles!: VcnProfileRes[];
   loading = true;
 
   constructor(private profileService: ProfileService,
-              private msg: NzMessageService) {
+              private msg: NzMessageService,
+              public location: Location) {
   }
 
   ngOnInit(): void {
     this.profileService.getMyVcnProfiles()
-      .pipe(map(res => res.data.content.filter(p => p.patientProfile.primary)))
+      .pipe(map(res => res.data.content.filter(p => !p.patientProfile.primary)))
       .subscribe({
         next: data => {
           this.vcnProfiles = data

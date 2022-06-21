@@ -31,6 +31,7 @@ import {PatientProfileDetailModule} from "../core/components/patient-profile-det
 import {ProfileDetailModule} from "../core/components/profile-detail/profile-detail.module";
 import {VcnProfileStatusPipeModule} from "../core/pipes/vcn-profile-status/vcn-profile-status-pipe.module";
 import {VcnProfileStatusDirectiveModule} from "../core/directives/vcn-profile-status/vcn-profile-status-directive.module";
+import { GuestDashboardRelativeComponent } from './guest-dashboard-relative/guest-dashboard-relative.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import {VcnProfileStatusDirectiveModule} from "../core/directives/vcn-profile-st
     GuestPatientProfileFormComponent,
     GuestNavbarMobileComponent,
     GuestHeaderMobileComponent,
-    GuestHeaderComponent
+    GuestHeaderComponent,
+    GuestDashboardRelativeComponent
   ],
   imports: [
     CommonModule,
