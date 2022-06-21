@@ -70,7 +70,7 @@ export class AuthService {
   }
 
   isAgent(): boolean {
-    return this.getCred().role === RoleEnum.ROLE_AGENT;
+    return this.getCred().role.includes(RoleEnum.ROLE_AGENT);
   }
 
   isAdmin(): boolean {

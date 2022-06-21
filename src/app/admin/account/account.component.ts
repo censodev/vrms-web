@@ -25,7 +25,12 @@ export class AccountComponent implements OnInit {
     'role': (val: RoleEnum) => {
       switch (val) {
         case RoleEnum.ROLE_ADMIN: return '<span class="text-red-500">Quản trị viên</span>'
-        case RoleEnum.ROLE_AGENT: return '<span class="text-blue-500">Nhân viên</span>'
+        case RoleEnum.ROLE_AGENT: return '<span class="text-blue-500">Nhân viên tổng quản</span>'
+        case RoleEnum.ROLE_AGENT_CHECKIN: return '<span class="text-blue-500">Nhân viên tiếp đón</span>'
+        case RoleEnum.ROLE_AGENT_TEST: return '<span class="text-blue-500">Chuyên viên khám sàng lọc</span>'
+        case RoleEnum.ROLE_AGENT_PAY: return '<span class="text-blue-500">Nhân viên thu ngân</span>'
+        case RoleEnum.ROLE_AGENT_INJECT: return '<span class="text-blue-500">Cán bộ tiêm chủng</span>'
+        case RoleEnum.ROLE_AGENT_MONITOR: return '<span class="text-blue-500">Giám sát viên</span>'
         case RoleEnum.ROLE_GUEST: return '<span>Khách</span>'
       }
     },

@@ -22,8 +22,12 @@
     <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="">
       <nz-select id="role" formControlName="role">
         <nz-option *ngIf="masterForm.value.role !== roleEnum.ROLE_GUEST" [nzValue]="roleEnum.ROLE_ADMIN" nzLabel="Quản trị viên"></nz-option>
-        <nz-option *ngIf="masterForm.value.role !== roleEnum.ROLE_GUEST" [nzValue]="roleEnum.ROLE_AGENT" nzLabel="Nhân viên"></nz-option>
-        <nz-option *ngIf="masterForm.value.role === roleEnum.ROLE_GUEST" [nzValue]="roleEnum.ROLE_GUEST" nzLabel="Khách"></nz-option>
+        <nz-option *ngIf="masterForm.value.role !== roleEnum.ROLE_GUEST" [nzValue]="roleEnum.ROLE_AGENT" nzLabel="Nhân viên tổng quản"></nz-option>
+        <nz-option *ngIf="masterForm.value.role !== roleEnum.ROLE_GUEST" [nzValue]="roleEnum.ROLE_AGENT_CHECKIN" nzLabel="Nhân viên tiếp đón"></nz-option>
+        <nz-option *ngIf="masterForm.value.role !== roleEnum.ROLE_GUEST" [nzValue]="roleEnum.ROLE_AGENT_TEST" nzLabel="Chuyên viên khám sàng lọc"></nz-option>
+        <nz-option *ngIf="masterForm.value.role !== roleEnum.ROLE_GUEST" [nzValue]="roleEnum.ROLE_AGENT_PAY" nzLabel="Nhân viên thu ngân"></nz-option>
+        <nz-option *ngIf="masterForm.value.role !== roleEnum.ROLE_GUEST" [nzValue]="roleEnum.ROLE_AGENT_INJECT" nzLabel="Cán bộ tiêm chủng"></nz-option>
+        <nz-option *ngIf="masterForm.value.role !== roleEnum.ROLE_GUEST" [nzValue]="roleEnum.ROLE_AGENT_MONITOR" nzLabel="Giám sát viên"></nz-option>
       </nz-select>
     </nz-form-control>
   </nz-form-item>
