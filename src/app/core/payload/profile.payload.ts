@@ -23,6 +23,7 @@ export interface PatientProfileRes {
   ward: MstWard;
   address: string;
   status: StatusEnum;
+  primary: boolean;
 }
 
 export interface PatientProfileCreateReq {
