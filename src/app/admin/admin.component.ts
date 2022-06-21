@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../auth/auth.service";
 import {Router} from "@angular/router";
 import {NzMessageService} from "ng-zorro-antd/message";
+import {RoleEnum} from "../auth/role.enum";
 
 @Component({
   selector: 'app-admin',
@@ -11,6 +12,7 @@ import {NzMessageService} from "ng-zorro-antd/message";
 export class AdminComponent implements OnInit {
   isCollapsed = false;
   user: any;
+  roleEnum = RoleEnum;
 
   constructor(public auth: AuthService,
               private router: Router,
